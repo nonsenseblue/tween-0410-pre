@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プレゼン資料 — Tween 82.8</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     Desktop
+     ============================================================ -->
+<div class="desktop" id="desktop">
+  <div class="desktop-icon" ondblclick="startPresentation('synergy')">
+    <div class="icon-img">
+      <!-- Synergy — Win95 presentation/projector icon -->
+      <svg width="32" height="32" viewBox="0 0 32 32" style="image-rendering:pixelated">
+        <rect x="4" y="4" width="24" height="18" fill="#c0c0c0"/>
+        <rect x="4" y="4" width="24" height="1" fill="#fff"/>
+        <rect x="4" y="4" width="1" height="18" fill="#fff"/>
+        <rect x="27" y="4" width="1" height="18" fill="#808080"/>
+        <rect x="4" y="21" width="24" height="1" fill="#808080"/>
+        <rect x="6" y="6" width="20" height="14" fill="#000080"/>
+        <rect x="8" y="8" width="16" height="3" fill="#fff" opacity="0.9"/>
+        <rect x="10" y="12" width="12" height="1" fill="#fff" opacity="0.5"/>
+        <rect x="10" y="14" width="10" height="1" fill="#fff" opacity="0.3"/>
+        <rect x="10" y="16" width="8" height="1" fill="#fff" opacity="0.3"/>
+        <rect x="14" y="22" width="4" height="3" fill="#808080"/>
+        <rect x="10" y="25" width="12" height="2" fill="#c0c0c0"/>
+        <rect x="10" y="25" width="12" height="1" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="icon-label">シナジー資料.exe</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="startPresentation('sst')">
+    <div class="icon-img">
+      <img src="assets/icons/document.svg" width="32" height="32" alt="SST資料">
+    </div>
+    <div class="icon-label">SST資料.exe</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="window.open('https://tween828.pages.dev/','_blank')">
+    <div class="icon-img">
+      <img src="assets/icons/tween.svg" width="32" height="32" alt="Tween">
+    </div>
+    <div class="icon-label">Tween 82.8</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="openApp('mycomputer')">
+    <div class="icon-img">
+      <img src="assets/icons/computer.svg" width="32" height="30" alt="My Computer">
+    </div>
+    <div class="icon-label">My Computer</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="openApp('recycle')">
+    <div class="icon-img">
+      <img src="assets/icons/recycle.svg" width="32" height="32" alt="Recycle Bin">
+    </div>
+    <div class="icon-label">Recycle Bin</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="openApp('network')">
+    <div class="icon-img">
+      <img src="assets/icons/network.svg" width="32" height="28" alt="Network">
+    </div>
+    <div class="icon-label">Network</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="openApp('notepad')">
+    <div class="icon-img">
+      <img src="assets/icons/notepad.svg" width="30" height="32" alt="README">
+    </div>
+    <div class="icon-label">README.txt</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="window.open('https://tween828.pages.dev/','_blank')">
+    <div class="icon-img">
+      <img src="assets/icons/ie.svg" width="32" height="32" alt="Internet Explorer">
+    </div>
+    <div class="icon-label">Internet Explorer</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="openApp('mydocs')">
+    <div class="icon-img">
+      <img src="assets/icons/folder.svg" width="32" height="28" alt="My Documents">
+    </div>
+    <div class="icon-label">My Documents</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="openApp('msdos')">
+    <div class="icon-img">
+      <img src="assets/icons/msdos.svg" width="32" height="32" alt="MS-DOS Prompt">
+    </div>
+    <div class="icon-label">MS-DOS Prompt</div>
+  </div>
+
+  <div class="desktop-icon" ondblclick="openApp('inbox')">
+    <div class="icon-img">
+      <img src="assets/icons/inbox.svg" width="32" height="26" alt="Inbox">
+    </div>
+    <div class="icon-label">Inbox</div>
+  </div>
+</div>
+
+<!-- Desktop Right-click Context Menu -->
+<div class="ctx-menu" id="ctx-menu">
+  <div class="ctx-item" onclick="closeCtxMenu()">アイコンの整列(I)</div>
+  <div class="ctx-item" onclick="closeCtxMenu()">等間隔に整列(A)</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="closeCtxMenu()">貼り付け(P)</div>
+  <div class="ctx-item" onclick="closeCtxMenu()">ショートカットの貼り付け(S)</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item ctx-sub">新規作成(W) &raquo;</div>
+  <div class="ctx-sep"></div>
+  <div class="ctx-item" onclick="closeCtxMenu()">プロパティ(R)</div>
+</div>
+
+<!-- ============================================================
+     Minminchi (Black cat pixel pet - bottom right)
+     ============================================================ -->
+<div class="minminchi" id="minminchi">
+  <div class="minminchi-bubble" id="minminchi-bubble"></div>
+  <div class="minminchi-shell">
+    <div class="minminchi-screen" onclick="minminchiTap()">
+      <svg width="48" height="56" viewBox="0 0 24 28" style="image-rendering:pixelated" id="minminchi-svg" class="minminchi-pixel">
+        <!-- Ears (front-facing triangles) -->
+        <rect x="6" y="2" width="1" height="1" fill="#1a1a1a"/>
+        <rect x="5" y="3" width="3" height="1" fill="#1a1a1a"/>
+        <rect x="6" y="3" width="1" height="1" fill="#ff8899"/>
+        <rect x="16" y="2" width="1" height="1" fill="#1a1a1a"/>
+        <rect x="15" y="3" width="3" height="1" fill="#1a1a1a"/>
+        <rect x="16" y="3" width="1" height="1" fill="#ff8899"/>
+        <!-- Head -->
+        <rect x="5" y="4" width="13" height="8" fill="#1a1a1a"/>
+        <rect x="6" y="4" width="11" height="9" fill="#1a1a1a"/>
+        <!-- Eyes (swappable) -->
+        <g id="mm-eyes">
+          <rect x="7" y="7" width="3" height="2" fill="#ffcc00"/>
+          <rect x="8" y="7" width="1" height="2" fill="#1a1a1a"/>
+          <rect x="13" y="7" width="3" height="2" fill="#ffcc00"/>
+          <rect x="14" y="7" width="1" height="2" fill="#1a1a1a"/>
+        </g>
+        <!-- Nose & mouth (swappable) -->
+        <g id="mm-mouth">
+          <rect x="11" y="10" width="1" height="1" fill="#ff8899"/>
+          <rect x="10" y="11" width="1" height="1" fill="#444"/>
+          <rect x="12" y="11" width="1" height="1" fill="#444"/>
+        </g>
+        <!-- Whiskers -->
+        <g id="mm-blush">
+          <rect x="3" y="9" width="3" height="1" fill="#444" opacity="0.5"/>
+          <rect x="3" y="11" width="3" height="1" fill="#444" opacity="0.5"/>
+          <rect x="17" y="9" width="3" height="1" fill="#444" opacity="0.5"/>
+          <rect x="17" y="11" width="3" height="1" fill="#444" opacity="0.5"/>
+        </g>
+        <!-- Body -->
+        <rect x="7" y="13" width="9" height="6" fill="#1a1a1a"/>
+        <rect x="8" y="13" width="7" height="7" fill="#1a1a1a"/>
+        <!-- White chest patch -->
+        <rect x="10" y="14" width="3" height="3" fill="#333"/>
+        <!-- Front paws -->
+        <rect x="7" y="19" width="3" height="2" fill="#1a1a1a"/>
+        <rect x="13" y="19" width="3" height="2" fill="#1a1a1a"/>
+        <!-- Tail -->
+        <rect x="16" y="14" width="2" height="1" fill="#1a1a1a"/>
+        <rect x="17" y="13" width="2" height="1" fill="#1a1a1a"/>
+        <rect x="18" y="12" width="2" height="2" fill="#1a1a1a"/>
+        <rect x="19" y="11" width="1" height="1" fill="#1a1a1a"/>
+        <!-- Accessory slot (food etc) -->
+        <g id="mm-accessory"></g>
+      </svg>
+    </div>
+    <div class="minminchi-btns">
+      <div class="minminchi-btn mm-btn-pet" onclick="minminchiPet()" title="撫でる"></div>
+      <div class="minminchi-btn mm-btn-feed" onclick="minminchiFeed()" title="餌やり"></div>
+      <div class="minminchi-btn mm-btn-tap" onclick="minminchiTap()" title="話す"></div>
+    </div>
+  </div>
+  <div class="minminchi-label">MINMINCHI</div>
+</div>
+
+<!-- ============================================================
+     Taskbar
+     ============================================================ -->
+<div class="taskbar">
+  <button class="start-btn" onclick="toggleStartMenu()">
+    <img src="assets/icons/windows.svg" width="14" height="14" alt="Windows">
+    Start
+  </button>
+
+  <div class="tb-divider"></div>
+
+  <div class="taskbar-item" id="taskbar-sst" style="display:none" onclick="focusPresentation()">
+    <span id="taskbar-sst-label">SST資料.exe</span>
+  </div>
+
+  <div class="taskbar-tray">
+    <svg width="12" height="10" viewBox="0 0 14 12" style="image-rendering:pixelated;opacity:0.7">
+      <polygon points="0,4 0,8 3,8 7,12 7,0 3,4" fill="#000"/>
+      <path d="M9 3 Q12 6 9 9" fill="none" stroke="#000" stroke-width="1.2"/>
+    </svg>
+    <span class="tray-lang">EN</span>
+    <span id="clock">--:--</span>
+  </div>
+</div>
+
+<!-- Start Menu -->
+<div class="start-menu-overlay" id="start-menu" onclick="closeStartMenu()">
+  <div class="start-menu-panel" onclick="event.stopPropagation()">
+    <div class="sm-sidebar-strip">Windows 95</div>
+    <div class="sm-items-list">
+      <div class="sm-item" onclick="closeStartMenu();openApp('notepad')">
+        <img src="assets/icons/notepad.svg" width="16" height="16" alt="">
+        <span>README.txt</span>
+      </div>
+      <div class="sm-item" onclick="closeStartMenu();openApp('mycomputer')">
+        <img src="assets/icons/computer.svg" width="16" height="15" alt="">
+        <span>My Computer</span>
+      </div>
+      <div class="sm-item" onclick="closeStartMenu();openApp('mydocs')">
+        <img src="assets/icons/folder.svg" width="16" height="14" alt="">
+        <span>My Documents</span>
+      </div>
+      <div class="sm-item" onclick="closeStartMenu();openApp('network')">
+        <img src="assets/icons/network.svg" width="16" height="14" alt="">
+        <span>Network</span>
+      </div>
+      <div class="sm-item" onclick="closeStartMenu();openApp('inbox')">
+        <img src="assets/icons/inbox.svg" width="16" height="13" alt="">
+        <span>Inbox</span>
+      </div>
+      <div class="sm-item" onclick="closeStartMenu();openApp('msdos')">
+        <img src="assets/icons/msdos.svg" width="16" height="16" alt="">
+        <span>MS-DOS Prompt</span>
+      </div>
+      <div class="sm-sep"></div>
+      <div class="sm-item" onclick="closeStartMenu();window.open('https://tween828.pages.dev/','_blank')">
+        <img src="assets/icons/tween.svg" width="16" height="16" alt="">
+        <span>Tween 82.8</span>
+      </div>
+      <div class="sm-sep"></div>
+      <div class="sm-item" onclick="closeStartMenu();startPresentation()">
+        <img src="assets/icons/document.svg" width="16" height="16" alt="">
+        <span>SST資料.exe</span>
+      </div>
+      <div class="sm-sep"></div>
+      <div class="sm-item sm-shutdown" onclick="closeStartMenu();closePresentation()">
+        <svg width="16" height="16" viewBox="0 0 16 16" style="image-rendering:pixelated"><circle cx="8" cy="8" r="6" fill="none" stroke="#808080" stroke-width="2"/><rect x="7" y="1" width="2" height="8" fill="#808080"/></svg>
+        <span>Shut Down...</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     Presentation Window
+     ============================================================ -->
+<div class="win-window" id="win-pres">
+  <div class="title-bar">
+    <span class="title-text" id="win-title">SST資料.exe — Tween 82.8 社内勉強会</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="minimizeWindow()">_</button>
+      <button class="title-btn" onclick="closePresentation()">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <div class="win-body">
+    <div id="slides-sst"><!-- ======== Slide 0: Title ======== -->
+<div class="slide" data-slide="0">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px 0">
+    <div class="inset" style="display:flex;align-items:center;gap:16px;padding:14px 18px;background:#fff">
+      <!-- Win95 PC pixel art -->
+      <svg width="48" height="48" viewBox="0 0 32 32" style="flex-shrink:0;image-rendering:pixelated">
+        <rect x="4" y="2" width="24" height="18" fill="#000080"/>
+        <rect x="6" y="4" width="20" height="14" fill="#008080"/>
+        <rect x="10" y="7" width="12" height="6" fill="#c0c0c0" opacity="0.3"/>
+        <rect x="2" y="20" width="28" height="3" fill="#c0c0c0"/>
+        <rect x="12" y="23" width="8" height="2" fill="#808080"/>
+        <rect x="8" y="25" width="16" height="2" fill="#c0c0c0"/>
+        <rect x="3" y="21" width="2" height="1" fill="#00ff50"/>
+      </svg>
+      <div>
+        <div style="font-size:28px;font-weight:bold;color:var(--navy);letter-spacing:2px">Tween 82.8</div>
+        <div style="font-size:14px;color:var(--text);margin-top:4px">ジャンル別BGMプレイヤー / Windows 95 UI</div>
+      </div>
+    </div>
+    <div style="width:100%;border-top:1px solid var(--gray);border-bottom:1px solid var(--white);margin:4px 0"></div>
+    <div style="text-align:center">
+      <div style="font-size:15px;color:var(--text);font-weight:bold">SST 社内勉強会</div>
+    </div>
+    <div style="text-align:center;margin-top:8px">
+      <span style="font-size:12px;color:var(--navy);font-weight:bold">NSフロント　黄銘敏</span>
+    </div>
+    <div style="text-align:center">
+      <span style="font-size:10px;color:var(--gray)">※ ダブルクリックで起動するタイプの資料です &nbsp; ※ →キーで進む</span>
+    </div>
+  </div>
+</div>
+
+<!-- ======== Slide 1: アジェンダ ======== -->
+<div class="slide" data-slide="1">
+  <h1>アジェンダ</h1>
+  <ul>
+    <li>Tween 82.8 って何？</li>
+    <li>きっかけ</li>
+    <li>デモ</li>
+    <li>技術構成（全員向け / エンジニア向け）</li>
+    <li>なぜ Windows 95？</li>
+    <li>Code &rarr; Figma パイプライン</li>
+    <li>Claude Code カスタマイズ</li>
+    <li>まとめ</li>
+  </ul>
+</div>
+
+<!-- ======== Slide 2: これ何？ ======== -->
+<div class="slide" data-slide="2">
+  <h1>Tween 82.8 って何？</h1>
+  <p><span class="highlight">現実と夢の狭間に流れるFMラジオ</span>をコンセプトにした、ジャンル別BGMプレイヤー。</p>
+  <p style="font-size:12px;color:var(--gray);margin-top:-4px">名前の由来：<b>Tween</b> = between（狭間）／ <b>82.8</b> = 太陽系が銀河を公転する速度（82.8万 km/h）をFM周波数に見立てた</p>
+  <ul>
+    <li><b>44ジャンル</b>に対応（Lofi, Jazz, City Pop, Synthwave...）</li>
+    <li>YouTubeの1時間ミックスを<b>即再生</b></li>
+    <li>Windows 95風のレトロUI</li>
+    <li>広告なし・無料・<b>PWAアプリ対応</b>（ホーム画面に追加可能）</li>
+    <li>勉強・作業・眠れない夜のお供に</li>
+  </ul>
+  <div class="code-block">C:\TWEEN> play --genre "lofi" --vibe "夜更かし"
+Loading... FM 82.8 MHz tuned.
+Now Playing: Lofi Hip Hop Radio  [||||||||------] 82.8MHz</div>
+  <div style="text-align:center;padding-top:4px">
+    <a class="link-btn" href="https://tween828.pages.dev/" target="_blank" rel="noopener">
+      <svg width="12" height="12" viewBox="0 0 12 12"><rect x="0" y="0" width="12" height="12" fill="none" stroke="var(--navy)" stroke-width="1.5"/><path d="M3 9L9 3M9 3H5M9 3V7" stroke="var(--navy)" stroke-width="1.5" fill="none"/></svg>
+      サイトを開く: tween828.pages.dev
+    </a>
+  </div>
+</div>
+
+<!-- ======== Slide 3: きっかけ（10分版では口頭で） ========
+<div class="slide" data-slide="3">
+  <h1>きっかけ</h1>
+  <div class="inset" style="background:#ffffcc;min-height:180px">
+    <p style="font-size:13px;color:#808080;text-align:center;padding:20px 0">
+      <b style="font-size:14px">[ ここにきっかけを入れてください ]</b><br><br>
+      例：<br>
+      ・作業中にBGMを探すのが面倒だった<br>
+      ・Windows 95のUIが好きだった<br>
+      ・FMラジオのように「流しっぱなし」にしたかった<br>
+      ・個人開発で新しい技術を試したかった
+    </p>
+  </div>
+  <p class="note">※ 発表者が自分の言葉で語るスライド</p>
+</div>
+-->
+
+<!-- ======== Slide 4: デモ前（10分版ではSlide 2にリンクあり） ========
+<div class="slide" data-slide="4">
+  <h1>実際に見てみましょう</h1>
+  <div style="text-align:center;padding:24px 0">
+    <div style="font-size:32px;font-weight:bold;color:var(--navy)">DEMO</div>
+    <div style="font-size:14px;color:var(--gray);margin-top:8px">実際のサイトを開いて、操作してみます</div>
+  </div>
+  <div class="inset dark" style="text-align:center;padding:16px">
+    <div style="font-family:'VT323',monospace;font-size:16px;color:var(--signal-green)">
+      Connecting to FM 82.8 MHz...<br>
+      <span style="color:var(--muted-green)">Signal strength: |||||||||| OK</span>
+    </div>
+  </div>
+  <div style="text-align:center;padding:8px 0">
+    <span style="font-size:11px;color:var(--gray)">「次へ」を押すと起動します... （たぶん）</span>
+  </div>
+</div>
+-->
+
+<!-- ======== Slide 5+6: BSOD演出（10分版ではスキップ） ========
+<div class="slide" data-slide="5"></div>
+
+<div class="slide" data-slide="6">
+  <h1>デモタイム</h1>
+  <div class="inset dark" style="text-align:center;padding:20px">
+    <div style="font-family:'VT323',monospace;font-size:20px;color:var(--signal-green)">
+      SYSTEM RECOVERED
+    </div>
+    <div style="font-family:'VT323',monospace;font-size:14px;color:var(--muted-green);margin-top:4px">
+      All systems nominal. Resuming broadcast...
+    </div>
+  </div>
+  <p style="text-align:center;font-size:15px;font-weight:bold;color:var(--navy);padding:8px 0">
+    ここで実際のサイトを見せる
+  </p>
+  <div style="text-align:center">
+    <a class="link-btn" href="https://tween828.pages.dev/" target="_blank" rel="noopener" style="font-size:14px;height:34px;padding:0 24px">
+      <svg width="14" height="14" viewBox="0 0 15 14" style="image-rendering:pixelated">
+        <line x1="11" y1="0" x2="14" y2="3" stroke="currentColor" stroke-width="1"/>
+        <rect x="0" y="2" width="15" height="12" fill="#c0c0c0" stroke="currentColor" stroke-width="1"/>
+        <rect x="1" y="4" width="6" height="8" fill="#808080"/>
+        <rect x="8" y="4" width="6" height="3" fill="#fff"/>
+        <rect x="8.5" y="5" width="5" height="1.5" fill="#008080"/>
+      </svg>
+      tween828.pages.dev を開く
+    </a>
+  </div>
+  <p class="note" style="text-align:center">※ ブルースクリーンは演出です。PCは無事です。</p>
+</div>
+-->
+
+<!-- ======== Slide 7: 技術構成（全員向け） ======== -->
+<div class="slide" data-slide="7">
+  <h1>技術構成（ざっくり）</h1>
+  <div class="section-label">全員向け</div>
+  <p>全体の仕組みはシンプル:</p>
+  <div class="flow">
+    <div class="flow-box brand">Tween<br><span style="font-size:11px;color:var(--muted-green)">Win95 UI</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-box accent">Cloudflare<br>Worker</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-box">YouTube<br>Data API</div>
+  </div>
+  <ul>
+    <li>ブラウザだけで動く（サーバーなし）</li>
+    <li>Cloudflare Workerが<b>APIキーを隠す中継役</b></li>
+    <li>検索結果はKVに<b>24時間キャッシュ</b>（API節約）</li>
+    <li>アプリはPWAで<b>ホーム画面追加</b>可能</li>
+  </ul>
+</div>
+
+<!-- ======== Slide 8: 技術詳細 ======== -->
+<div class="slide" data-slide="8">
+  <h1>技術詳細</h1>
+  <div class="section-label">エンジニア向け</div>
+  <table class="compare-table">
+    <tr><th style="width:130px">項目</th><th>詳細</th></tr>
+    <tr><td>フロントエンド</td><td>単一HTML + CSS + バニラJS（フレームワークなし）</td></tr>
+    <tr><td>バックエンド</td><td>Cloudflare Worker（エッジで実行）</td></tr>
+    <tr><td>キャッシュ</td><td>Cloudflare KV（TTL: 24h）</td></tr>
+    <tr><td>APIキー管理</td><td>Worker内。複数キーをラウンドロビン</td></tr>
+    <tr><td>PWA</td><td>Service Worker + manifest.json</td></tr>
+    <tr><td>多言語</td><td>自作i18n（data-i18n属性 + JSON辞書）</td></tr>
+    <tr><td>SEO / AIO</td><td>JSON-LD、OGP、Twitter Card</td></tr>
+    <tr><td>ホスティング</td><td>Cloudflare Pages</td></tr>
+  </table>
+  <div class="code-block" style="font-size:13px;margin-top:6px">// Worker: YouTube検索 → KVキャッシュ → レスポンス
+const cached = await env.TWEEN_CACHE.get(cacheKey);
+if (cached) return new Response(cached, { headers });
+const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
+</div>
+
+<!-- ======== Slide 9: Win95 UI ======== -->
+<div class="slide" data-slide="9">
+  <h1>なぜ Windows 95？</h1>
+  <ul>
+    <li>コンセプトは<span class="highlight">「大人になる前に聴いていたあの夜」</span></li>
+    <li>ノスタルジー × 実用性 = Win95 UI</li>
+  </ul>
+  <div class="code-block" style="font-size:12px">/* Win95 UIの核心 = border-color の4辺制御 */
+.btn    { border-color: #fff #404040 #404040 #fff; }  /* 出っ張り */
+.btn:active { border-color: #404040 #fff #fff #404040; }  /* 凹み */
+.inset  { border-color: #808080 #fff #fff #808080; }  /* 凹み枠 */</div>
+  <p style="font-size:11px;color:var(--gray);margin-top:2px">光源は左上。この1ルールでボタン・ウィンドウ・入力欄すべての立体感を再現。</p>
+  <table class="compare-table" style="font-size:11px;margin-top:6px">
+    <tr><th style="width:140px">再現した要素</th><th>実装</th></tr>
+    <tr><td>ウィンドウ（ドラッグ・リサイズ）</td><td>バニラJS mousedown/move + border-color</td></tr>
+    <tr><td>タスクバー + スタートメニュー</td><td>fixed配置 + z-index管理</td></tr>
+    <tr><td>デスクトップアイコン（ドラッグ）</td><td>座標保持 + grid snap</td></tr>
+    <tr><td>メニューバー + ドロップダウン</td><td>:hover + absolute配置</td></tr>
+    <tr><td>ダイアログ（エラー/確認）</td><td>モーダル + Win95アイコンSVG</td></tr>
+    <tr><td>右クリックメニュー</td><td>contextmenu イベント</td></tr>
+  </table>
+  <p style="font-size:11px;margin-top:4px"><b>フレームワーク不使用</b> &mdash; 単一HTML + CSS + バニラJS。依存ゼロ。</p>
+  <p class="note">※ この資料自体もWin95 UIで作られています（再帰的）</p>
+</div>
+
+<!-- ======== Slide 10: Code→Figma 背景 ======== -->
+<div class="slide" data-slide="10">
+  <h1>Code &rarr; Figma：なぜ必要だったか</h1>
+  <h2>BBNavi DS構築での課題</h2>
+  <ul>
+    <li>デザインデータが<b>存在しない</b>。コードだけで完結していた</li>
+    <li>AI駆動で開発を進める中、<b>依頼者側がFigmaで組み立て</b> &rarr; システム側に渡すフローが必要に</li>
+    <li>つまり：<span class="highlight">コードからUIコンポーネントをFigmaに持っていく</span>必要があった</li>
+  </ul>
+  <div class="inset" style="background:#ffe4e4">
+    <p style="font-size:12px;line-height:1.7">
+      <b>問題:</b> 既存ページはPHP + SCSS。Figmaには何もない。<br>
+      手動でFigmaに起こす？ &rarr; ページ数が多すぎて現実的でない。
+    </p>
+  </div>
+  <p style="font-size:14px;font-weight:bold;color:var(--navy)">&rarr; Claude Codeで自動化パイプラインを自作。</p>
+</div>
+
+<!-- ======== Slide 11: Code→Figma 仕組み ======== -->
+<div class="slide" data-slide="11">
+  <h1>Code &rarr; Figma：パイプライン</h1>
+  <div class="section-label">Claude Code /code-to-figma コマンド（18スクリプト / 依存ベース並列実行）</div>
+  <div class="pipeline">
+    <div class="pipeline-step">
+      <div class="pipeline-num">1</div>
+      <div class="pipeline-label">PHPページをヘッドレスブラウザで取得</div>
+      <div class="pipeline-tech">Puppeteer + getComputedStyle &rarr; JSON</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">2</div>
+      <div class="pipeline-label">疑似要素・アイコンフォントをSVGに変換</div>
+      <div class="pipeline-tech">svg-generator.ts / generate-icon-map.ts</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">3</div>
+      <div class="pipeline-label">Auto Layout用CSSを生成（2モード選択）</div>
+      <div class="pipeline-tech">html-to-flex.ts / css-extractor.ts</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">4</div>
+      <div class="pipeline-label">Visual QA &mdash; 生成HTMLとオリジナルを自動比較（サブエージェント並列）</div>
+      <div class="pipeline-tech">Playwright + pixelmatch + Claude Vision + Chrome MCP（実サーバ確認）</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">5</div>
+      <div class="pipeline-label">Figma MCP経由でキャプチャ・取り込み</div>
+      <div class="pipeline-tech">capture.js &rarr; generate_figma_design</div>
+    </div>
+  </div>
+  <div class="inset" style="background:#f0f8ff;margin-top:4px">
+    <p style="font-size:11px;line-height:1.7">
+      <b>逆方向も対応：</b> /figma-to-code コマンドで Figma &rarr; PHP + SCSS 生成。<br>
+      <b>REST API</b>（/v1/files/.../nodes）と <b>MCP</b> の両方を使用。CSS値・テキスト抽出は REST API が正解ソース（MCP経由は30%不正確なケースあり）。MCP はキャプチャ・メタデータ取得に使用。
+    </p>
+  </div>
+</div>
+
+<!-- ======== Slide 12: 技術スタック（10分版ではSlide 8に集約） ========
+<div class="slide" data-slide="12">
+  <h1>パイプライン：技術スタック</h1>
+  <div class="section-label">htdocs/react-figma/ &mdash; TypeScript + Vite</div>
+  <table class="compare-table">
+    <tr><th style="width:140px">カテゴリ</th><th>ツール / ライブラリ</th></tr>
+    <tr><td>言語</td><td><b>TypeScript</b>（tsx で直接実行、ビルド不要）</td></tr>
+    <tr><td>ブラウザ自動化</td><td><b>Puppeteer</b>（DOM取得 + getComputedStyle）</td></tr>
+    <tr><td>CSS処理</td><td><b>PostCSS</b>（per-class抽出）+ <b>Cheerio</b>（HTML解析）</td></tr>
+    <tr><td>画像処理</td><td><b>Sharp</b>（リサイズ）+ <b>pixelmatch</b>（差分検出）</td></tr>
+    <tr><td>Visual QA</td><td><b>Playwright</b>（スクリーンショット）+ <b>Claude Vision API</b>（AI判定）</td></tr>
+    <tr><td>Figma連携</td><td><b>MCP</b>（キャプチャ / スクリーンショット）+ <b>REST API</b>（CSS値 / テキスト抽出）</td></tr>
+    <tr><td>開発サーバ</td><td><b>Vite</b>（port 5173）&mdash; 生成HTMLの配信 + capture.js読み込み</td></tr>
+  </table>
+  <div class="inset" style="background:#f0f8ff;margin-top:6px">
+    <p style="font-size:11px;line-height:1.7">
+      <b>Figma API 二層構造：</b><br>
+      <b>MCP</b>（.claude/.mcp.json）&mdash; figma-mcp + Personal Access Token。キャプチャ・メタデータ・スクリーンショット取得用。<br>
+      <b>REST API</b>（/v1/files/.../nodes）&mdash; CSS値・フォント・カラー・テキストの正確な抽出。Figma &rarr; Code の唯一の正解ソース。
+    </p>
+  </div>
+</div>
+-->
+
+<!-- ======== Slide 13: Claude Code カスタマイズ（10分版ではスキップ） ========
+<div class="slide" data-slide="13">
+  <h1>Claude Code：コマンド &amp; スキル</h1>
+  <div class="section-label">.claude/ ディレクトリ &mdash; 19ファイルのナレッジベース</div>
+  <table class="compare-table">
+    <tr><th style="width:160px">カスタムコマンド</th><th>内容</th></tr>
+    <tr><td><b>/code-to-figma</b></td><td>PHP &rarr; パイプライン実行 &rarr; Visual QA &rarr; Figmaキャプチャ（PC/SP自動切替）</td></tr>
+    <tr><td><b>/figma-to-code</b></td><td>Figma URL &rarr; REST API抽出 &rarr; PHP + SCSS生成（9ステップ）</td></tr>
+    <tr><td><b>/review</b></td><td>GitLab MR / branch diff &rarr; 自動検証スクリプト &rarr; 信頼度付きレポート</td></tr>
+    <tr><td><b>/new-page</b></td><td>サービスページ新規作成 + バリデーション</td></tr>
+  </table>
+  <div style="padding:4px 0">
+    <div class="section-label" style="margin-bottom:4px">スキル（アルゴリズム定義）</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;font-size:10px">
+      <span style="background:var(--navy);color:white;padding:2px 8px;border-radius:2px">figma-rest-api</span>
+      <span style="background:var(--navy);color:white;padding:2px 8px;border-radius:2px">figma-hidden-detection</span>
+      <span style="background:var(--navy);color:white;padding:2px 8px;border-radius:2px">figma-image-strategy</span>
+      <span style="background:var(--navy);color:white;padding:2px 8px;border-radius:2px">figma-component-rules</span>
+      <span style="background:var(--navy);color:white;padding:2px 8px;border-radius:2px">code-to-figma-pipeline</span>
+    </div>
+  </div>
+  <p class="note">コマンドが「いつ何をするか」、スキルが「どう変換するか」を定義。ドキュメント更新 = 全コマンドに即反映。</p>
+</div>
+-->
+
+<!-- ======== Slide 14: .claude ディレクトリ構成 ======== -->
+<div class="slide" data-slide="14">
+  <h1>.claude/ ディレクトリ構成</h1>
+  <div class="section-label">navi.gmobb.jp &mdash; 27ファイルのナレッジベース</div>
+  <div style="display:flex;gap:12px;align-items:flex-start">
+    <div class="code-block" style="font-size:11px;line-height:1.7;flex:1;white-space:pre;font-family:'Courier New',monospace">.claude/
+├── <b style="color:#4488cc">CLAUDE.md</b>          <span style="color:var(--gray)">&larr; プロジェクト知識ベース</span>
+├── <b style="color:#4488cc">.mcp.json</b>          <span style="color:var(--gray)">&larr; Figma MCP + PAT設定</span>
+├── settings.json
+│
+├── <b>commands/</b>          <span style="color:var(--gray)">&larr; カスタムコマンド</span>
+│   ├── code-to-figma.md
+│   ├── figma-to-code.md
+│   └── review.md
+│
+├── <b>skills/</b>            <span style="color:var(--gray)">&larr; アルゴリズム定義</span>
+│   ├── figma-rest-api.md
+│   ├── code-to-figma-pipeline.md
+│   ├── figma-hidden-detection.md
+│   ├── figma-image-strategy.md
+│   └── figma-component-rules.md
+│
+├── <b>docs/</b>              <span style="color:var(--gray)">&larr; ドキュメント（8ファイル）</span>
+│   ├── coding-standards.md
+│   ├── figma-canvas-rules.md
+│   ├── visual-qa.md
+│   └── ...
+│
+├── <b>references/</b>
+│   └── navi-css-reference.md
+│
+└── <b>scripts/</b>           <span style="color:var(--gray)">&larr; 検証スクリプト</span>
+    ├── check-html.sh
+    ├── compile-scss.sh
+    └── validate-meta.sh</div>
+    <div style="flex:0 0 180px;display:flex;flex-direction:column;gap:6px">
+      <div class="inset" style="background:#f0f8ff;padding:6px 8px">
+        <p style="font-size:10px;line-height:1.6"><b>commands/</b><br>「いつ何をするか」<br>コマンド名 = ワークフロー</p>
+      </div>
+      <div class="inset" style="background:#fff8f0;padding:6px 8px">
+        <p style="font-size:10px;line-height:1.6"><b>skills/</b><br>「どう変換するか」<br>変換ロジックの定義</p>
+      </div>
+      <div class="inset" style="background:#f0fff0;padding:6px 8px">
+        <p style="font-size:10px;line-height:1.6"><b>docs/</b><br>コーディング規約・QA基準<br>コマンドから参照</p>
+      </div>
+    </div>
+  </div>
+  <p class="note">CLAUDE.md更新 = 全コマンド・スキルに即反映。ドキュメントがコードと同等の資産。</p>
+</div>
+
+<!-- ======== Slide 15: 比較（10分版では口頭で） ========
+<div class="slide" data-slide="15">
+  <h1>自作パイプライン vs HTML to Design</h1>
+  <table class="compare-table">
+    <tr><th style="width:120px"></th><th>HTML to Design</th><th>自作パイプライン</th></tr>
+    <tr><td>::before/::after</td><td>非対応（消える）</td><td><b>SVGに変換して再現</b></td></tr>
+    <tr><td>アイコンフォント</td><td>非対応（文字化け）</td><td><b>SVGマップで自動変換</b></td></tr>
+    <tr><td>Auto Layout</td><td>基本的</td><td><b>計算済みスタイルから推論</b></td></tr>
+    <tr><td>SP版対応</td><td>手動</td><td><b>UA偽装 + viewport 375px固定</b></td></tr>
+    <tr><td>社内CSS</td><td>汎用</td><td><b>navi専用に最適化</b></td></tr>
+    <tr><td>QA</td><td>目視</td><td><b>Playwright + AI自動比較</b></td></tr>
+  </table>
+  <div style="padding:8px 0">
+    <div class="section-label">双方向ワークフロー</div>
+    <div class="flow" style="padding:8px 0">
+      <div class="flow-box">PHP/SCSS<br><span style="font-size:10px;color:var(--gray)">既存コード</span></div>
+      <div class="flow-arrow">&harr;</div>
+      <div class="flow-box accent">Claude Code<br><span style="font-size:10px;opacity:0.7">パイプライン</span></div>
+      <div class="flow-arrow">&harr;</div>
+      <div class="flow-box" style="border-color:#008080;background:#f0efe8"><span style="color:#008080;font-weight:bold">Figma</span><br><span style="font-size:10px;color:var(--gray)">デザインデータ</span></div>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- ======== Slide 16: Tween Code→Figma 実践 ======== -->
+<div class="slide" data-slide="16">
+  <h1>Tween：Code &rarr; Figma 実践</h1>
+  <div class="section-label">Claude Code + Figma MCP</div>
+  <p>BBNaviの自作パイプラインとは別に、<b>Tween 82.8のUIパーツ</b>をFigmaに取り込んだ例。</p>
+  <div class="pipeline">
+    <div class="pipeline-step">
+      <div class="pipeline-num">1</div>
+      <div class="pipeline-label">Claude Codeで10カテゴリのWin95 UIパーツをReactコンポーネントで生成</div>
+      <div class="pipeline-tech">React + Vite（Desktop Icons / Cat / Weather / Guestbook / Dialogs 等）</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">2</div>
+      <div class="pipeline-label">Viteサーバーを立てて capture.js 経由でキャプチャ</div>
+      <div class="pipeline-tech">port 5173 &rarr; capture.js読み込み &rarr; Figma MCP</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">3</div>
+      <div class="pipeline-label">Figmaファイルに自動取り込み</div>
+      <div class="pipeline-tech">generate_figma_design &rarr; existingFile</div>
+    </div>
+  </div>
+  <div style="text-align:center;padding:8px 0">
+    <a class="link-btn" href="https://www.figma.com/design/8dldHnJ1YoWQ6ghuPqvxAI/Tween-82.8-%E2%80%94-UI-Component-Parts?node-id=0-1&p=f&t=fktjellp8oK5MEhw-0" target="_blank" rel="noopener">
+      <svg width="12" height="12" viewBox="0 0 12 12"><rect x="0" y="0" width="12" height="12" fill="none" stroke="var(--navy)" stroke-width="1.5"/><path d="M3 9L9 3M9 3H5M9 3V7" stroke="var(--navy)" stroke-width="1.5" fill="none"/></svg>
+      生成されたFigmaファイルを開く
+    </a>
+  </div>
+  <p class="note">自作パイプラインが不要なケースでは、HTML to Designだけで十分。用途に応じて使い分ける。</p>
+</div>
+
+<!-- ======== Slide 17: まとめ ======== -->
+<div class="slide" data-slide="17">
+  <h1>まとめ</h1>
+  <ul>
+    <li><b>Tween 82.8</b> &mdash; Win95風BGMプレイヤー。フレームワークなし、単一HTML</li>
+    <li><b>Cloudflare Worker + KV</b> &mdash; エッジでAPI中継、24hキャッシュ</li>
+    <li><b>Win95 UI</b> &mdash; ウィンドウ・タスクバー・メニュー・ダイアログをCSSとバニラJSだけで再現</li>
+    <li><b>Code &rarr; Figma</b> &mdash; デザインデータがないなら、コードから作る</li>
+    <li><b>Claude Code</b> &mdash; パイプライン構築から資料作成まで</li>
+  </ul>
+  <div class="inset dark" style="text-align:center;padding:20px;margin-top:4px">
+    <div style="font-family:'VT323',monospace;font-size:28px;color:var(--white);letter-spacing:2px">
+      「ないなら作る」
+    </div>
+    <div style="font-family:'VT323',monospace;font-size:14px;color:var(--muted-green);margin-top:6px">
+      -- code, tools, design data --
+    </div>
+  </div>
+</div>
+
+<!-- ======== Slide 18: 予告 ======== -->
+<div class="slide" data-slide="18">
+  <h1>次回予告</h1>
+  <p>本日はお時間の関係で、駆け足でのご紹介となりました。</p>
+  <p style="margin-top:4px">次回は今回省略した内容も含めて、改めてじっくりお話しする機会をいただいています。</p>
+  <ul style="font-size:12px;margin-top:6px;line-height:1.8">
+    <li>Tween 82.8 の<b>新機能</b> &mdash; リアルタイム掲示板（Cloudflare D1）、天気表示（Open-Meteo + 位置情報）、ポモドーロタイマー、Todo</li>
+    <li><b>44ジャンル対応</b>、シャッフル再生、PWAなど機能の全容</li>
+    <li>Cloudflare Worker + KV の<b>APIキーローテーション</b>とキャッシュ戦略</li>
+    <li>Code &rarr; Figma 自作パイプラインの<b>技術スタック詳細</b>と既存ツールとの比較</li>
+    <li>ライブデモ + BSOD演出</li>
+  </ul>
+  <div class="inset" style="background:#fff;padding:16px 18px;margin-top:10px">
+    <p style="font-size:15px;font-weight:bold;color:var(--navy);line-height:1.8">
+      クリエイティブシナジー 登壇
+    </p>
+    <p style="font-size:13px;color:var(--text);margin-top:4px;line-height:1.8">
+      日時：4月10日（金）16:00 &ndash; 17:00<br>
+      持ち時間：1時間
+    </p>
+  </div>
+  <p style="margin-top:10px;font-size:13px">ご都合がつきましたら、ぜひお越しください。</p>
+</div>
+
+<!-- ======== Slide 19: 終了 ======== -->
+<div class="slide" data-slide="19">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px 0">
+    <div style="text-align:center">
+      <div style="font-size:18px;font-weight:bold;color:var(--navy);line-height:1.6">
+        ありがとうございました
+      </div>
+      <div style="font-size:13px;color:var(--text);margin-top:8px;line-height:1.8">
+        質問・感想があればどうぞ。<br>
+        発表を終了するには「×」ボタンを押してください。
+      </div>
+    </div>
+
+    <div style="width:100%;border-top:1px solid var(--gray);border-bottom:1px solid var(--white);margin:4px 0"></div>
+
+    <div class="inset dark" style="width:100%;text-align:center;padding:14px">
+      <div style="font-family:'VT323',monospace;font-size:15px;color:var(--signal-green)">
+        C:\TWEEN&gt; echo "Thank you for listening!"<br>
+        <span style="color:var(--muted-green)">FM 82.8 MHz — signing off. Goodnight.</span>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="link-btn" href="https://tween828.pages.dev/" target="_blank" rel="noopener" style="font-size:13px;height:32px;padding:0 20px">
+        <img src="assets/icons/tween.svg" width="16" height="16" alt="" style="margin-right:2px">
+        tween828.pages.dev
+      </a>
+    </div>
+
+    <div style="font-size:11px;color:var(--gray);text-align:center">
+      NSフロント　黄銘敏
+    </div>
+  </div>
+</div>
+</div>
+    <div id="slides-synergy" style="display:none"><!-- ======== Slide 0: Title ======== -->
+<div class="slide synergy" data-slide="0">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px 0">
+    <div class="inset" style="display:flex;align-items:center;justify-content:center;gap:18px;padding:18px 24px;background:#fff">
+      <svg width="56" height="56" viewBox="0 0 32 32" style="flex-shrink:0;image-rendering:pixelated">
+        <rect x="4" y="2" width="24" height="18" fill="#000080"/>
+        <rect x="6" y="4" width="20" height="14" fill="#008080"/>
+        <rect x="10" y="7" width="12" height="6" fill="#c0c0c0" opacity="0.3"/>
+        <rect x="2" y="20" width="28" height="3" fill="#c0c0c0"/>
+        <rect x="12" y="23" width="8" height="2" fill="#808080"/>
+        <rect x="8" y="25" width="16" height="2" fill="#c0c0c0"/>
+        <rect x="3" y="21" width="2" height="1" fill="#00ff50"/>
+      </svg>
+      <div style="text-align:center">
+        <div style="font-size:34px;font-weight:bold;color:var(--navy);letter-spacing:3px">Tween 82.8</div>
+        <div style="font-size:16px;color:var(--text);margin-top:6px">ジャンル別BGMプレイヤー / Windows 95 UI</div>
+      </div>
+    </div>
+    <div style="width:100%;border-top:1px solid var(--gray);border-bottom:1px solid var(--white);margin:6px 0"></div>
+    <div style="text-align:center">
+      <div style="font-size:18px;color:var(--text);font-weight:bold">クリエイティブシナジー</div>
+    </div>
+    <div style="text-align:center;margin-top:10px">
+      <span style="font-size:14px;color:var(--navy);font-weight:bold">GMOインターネット　NSフロント　黄銘敏</span>
+    </div>
+    <div style="text-align:center">
+      <span style="font-size:11px;color:var(--gray)">※ ダブルクリックで起動するタイプの資料です &nbsp; ※ →キーで進む</span>
+    </div>
+  </div>
+</div>
+
+<!-- ======== Slide 1: アジェンダ ======== -->
+<div class="slide synergy" data-slide="1">
+  <h1>アジェンダ</h1>
+  <div style="display:flex;gap:40px;justify-content:center;align-items:flex-start;flex:1;padding-top:10px">
+    <div>
+      <h2 style="text-align:center;margin-bottom:10px">前半（非技術者向け）</h2>
+      <table style="font-size:14px;line-height:2.4;border-spacing:6px 0">
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">1.</td><td>きっかけ / 「場所」を作る</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">2.</td><td>なぜ Windows 95？</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">3.</td><td>Tween 82.8 の全機能</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">4.</td><td>世界観の仕掛け</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">5.</td><td>デモ</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2 style="text-align:center;margin-bottom:10px">後半（技術者向け）</h2>
+      <table style="font-size:14px;line-height:2.4;border-spacing:6px 0">
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">6.</td><td>技術構成 &mdash; Cloudflare</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">7.</td><td>Code &rarr; Figma パイプライン</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">8.</td><td>Claude Code カスタマイズ</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">9.</td><td>AIとの付き合い方</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">10.</td><td>まとめ</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     Phase 1: コンセプト（Why）
+     ════════════════════════════════════════ -->
+
+<!-- ======== Slide 2: きっかけ ======== -->
+<div class="slide synergy" data-slide="2">
+  <h1>きっかけ</h1>
+  <p style="font-size:14px;line-height:1.8;color:var(--navy);font-weight:bold;margin-bottom:2px">
+    ちょっと聞いていいですか &mdash; 深夜ラジオ、聴いたことある人？
+  </p>
+  <div class="inset dark" style="padding:14px 18px">
+    <p style="font-family:'VT323',monospace;font-size:12px;color:var(--signal-green);line-height:2">
+      1990年代後半。バブルが弾けて、大人たちは「もうダメだ」と言ってた。<br>
+      子供はそれを聞きながら育った。将来への漠然とした不安。<br>
+      でも、<b>深夜だけは自由だった</b>。<br>
+      深夜ラジオ、深夜アニメ、深夜のネット。<br>
+      大人が寝た後の時間だけが、自分だけの世界だった。
+    </p>
+  </div>
+  <p style="font-size:13px;line-height:2;margin-top:10px">
+    仕事をしながら、通勤しながら、眠れない夜。<br>
+    ふと、あの頃の空気が欲しくなる瞬間がある。<br>
+    曲を選ぶんじゃなくて、ただ<b>耳を傾けるだけの場所</b>。<br>
+    FMラジオのように流しっぱなしにできる、あの感覚。
+  </p>
+  <p style="font-size:13px;line-height:2;margin-top:6px">
+    そもそもレトロが好きだった。<br>
+    だから作った。選ばなくていい音楽と、あの時代の空気を、もう一度。
+  </p>
+</div>
+
+<!-- ======== Slide 3: 「場所」を作る ======== -->
+<div class="slide synergy" data-slide="3">
+  <h1>Tween 82.8 &mdash; 「場所」を作る</h1>
+  <p style="font-size:14px;line-height:1.9">
+    Spotify、Apple Music、YouTube Music &mdash; 音楽を聴くサービスはいくらでもある。<br>
+    でも欲しかったのはサービスじゃない。<b>音楽を聴く「場所」</b>が欲しかった。<br>
+    BGMプレイヤーを作ったんじゃない。<b>あの空気を再現するための装置</b>を作った。
+  </p>
+  <div class="inset dark" style="padding:12px 18px;margin-top:6px">
+    <p style="font-family:'VT323',monospace;font-size:13px;color:var(--signal-green);line-height:2">
+      <b>Tween</b> = between。現実と夢の狭間。<br>
+      <b>82.8</b> = 太陽系が銀河を公転する速度（82.8万 km/h）をFM周波数に見立てた。<br>
+      存在しない周波数。受信できないラジオ局。天気の都市名は <b>Tween City</b>。
+    </p>
+  </div>
+  <p style="font-size:14px;line-height:1.9;margin-top:6px">
+    45ジャンル。Lofi、Jazz、City Pop、Synthwave...<br>
+    チューニングだけが、あなたの仕事。世界観があるから<b>「ここで聴きたい」</b>が生まれる。
+  </p>
+  <div style="text-align:center;padding-top:4px">
+    <a class="link-btn" href="https://tween828.pages.dev/" target="_blank" rel="noopener">
+      <svg width="12" height="12" viewBox="0 0 12 12"><rect x="0" y="0" width="12" height="12" fill="none" stroke="var(--navy)" stroke-width="1.5"/><path d="M3 9L9 3M9 3H5M9 3V7" stroke="var(--navy)" stroke-width="1.5" fill="none"/></svg>
+      サイトを開く: tween828.pages.dev
+    </a>
+  </div>
+</div>
+
+<!-- ======== Slide 4: なぜ Windows 95？ ======== -->
+<div class="slide synergy" data-slide="4">
+  <h1>なぜ Windows 95？</h1>
+  <div class="inset dark" style="padding:14px 18px">
+    <p style="font-family:'VT323',monospace;font-size:13px;color:var(--signal-green);line-height:2">
+      C:\> 深夜にFMラジオを聴いていた人は、<br>
+      C:\> あの時代、CRTモニターの前に座っていた人と同じ。<br>
+      C:\> 画面の光と、スピーカーからの音だけが世界だった夜。
+    </p>
+  </div>
+  <div style="display:flex;gap:12px;margin-top:8px">
+    <div class="inset" style="flex:1;background:#f0f8ff;padding:10px 14px">
+      <p style="font-size:13px;line-height:1.8">
+        <b>選ばなかった理由</b><br>
+        &times; 懐かしいから<br>
+        &times; 流行りだから<br>
+        &times; 見た目がかわいいから
+      </p>
+    </div>
+    <div class="inset" style="flex:1;background:#f0fff0;padding:10px 14px">
+      <p style="font-size:13px;line-height:1.8">
+        <b>選んだ理由</b><br>
+        &check; UIと中身が同じ情緒を指している<br>
+        &check; 「場所」の空気を成立させる唯一のUI<br>
+        &check; 体験の設計として必然
+      </p>
+    </div>
+  </div>
+  <p style="font-size:14px;line-height:2;margin-top:8px">
+    レトロな見た目を被せたんじゃない。深夜ラジオの空気を画面にしたらWin95になった。<br>
+    スキューモーフィズム &mdash; <b>画面の向こうに「部屋」がある</b>と感じさせるため。<b>貼り皮じゃなく、必然。</b>
+  </p>
+</div>
+
+<!-- ======== Slide 6: Win95 デザイン原則 ======== -->
+<div class="slide synergy" data-slide="5">
+  <h1>Win95 デザイン原則</h1>
+  <table class="compare-table" style="font-size:12px">
+    <tr><th style="width:150px">原則</th><th>内容</th></tr>
+    <tr><td><b>光源は左上</b></td><td>全UI共通。左と上のボーダーが明るく、右と下が暗い。これだけで立体が生まれる</td></tr>
+    <tr><td><b>2色で3次元</b></td><td>グラデーションもドロップシャドウも不要。#fff と #808080 の2色で出っ張り・凹みを表現</td></tr>
+    <tr><td><b>状態は反転で伝える</b></td><td>:active でボーダー色を反転 = 物理ボタンの押下感。hover変色ではなく凹む</td></tr>
+    <tr><td><b>色は5色</b></td><td>#c0c0c0 / #fff / #808080 / #404040 / #000080。これ以外は使わない</td></tr>
+    <tr><td><b>フォントは1つ</b></td><td>MS Sans Serif 11px。例外はモノスペースのみ（ターミナル・時計）</td></tr>
+    <tr><td><b>区切りは二重線</b></td><td>divider = gray線 + white線の2本セット。セパレータも立体で表現</td></tr>
+    <tr><td><b>空間は階層で作る</b></td><td>デスクトップ &gt; ウィンドウ &gt; メニュー &gt; ダイアログ。z-indexで空間の奥行きを再現</td></tr>
+    <tr><td><b>プログレスはブロック</b></td><td>滑らかなバーではなく、ネイビーのブロックが積み重なる。デジタルな質感</td></tr>
+  </table>
+  <div class="code-block" style="font-size:11px;margin-top:6px">/* この3行がWin95 UIの全て */
+.raised { border-color: #fff #404040 #404040 #fff; }  /* 出っ張り = ボタン・ウィンドウ */
+.sunken { border-color: #808080 #fff #fff #808080; }  /* 凹み = 入力欄・ステータスバー */
+.active { border-color: #404040 #fff #fff #404040; }  /* 押下 = raised の反転 */</div>
+  <p class="note">※ この資料自体がWin95 UIで作られています（再帰的）</p>
+</div>
+
+<!-- ======== Slide 7: 全機能一覧 ======== -->
+<div class="slide synergy" data-slide="6">
+  <h1>Tweenの全機能</h1>
+  <table class="compare-table" style="font-size:12px">
+    <tr><th style="width:130px">機能</th><th>詳細</th><th style="width:150px">技術</th></tr>
+    <tr><td><b>BGMプレイヤー</b></td><td>45ジャンル、シャッフル、Winamp風ビジュアライザー</td><td>YouTube API + KVキャッシュ</td></tr>
+    <tr><td><b>Guestbook（掲示板）</b></td><td>リアルタイム投稿。深夜ラジオのハガキコーナー</td><td>Cloudflare D1</td></tr>
+    <tr><td><b>Weather（天気）</b></td><td>位置情報 + 詩的な天気コメント + 逆ジオコーディング</td><td>Open-Meteo + Nominatim</td></tr>
+    <tr><td><b>Pomodoro</b></td><td>作業・休憩ごとにジャンル自動切替（例: Lofi &rarr; Jazz）</td><td>localStorage + 通知API</td></tr>
+    <tr><td><b>Todo</b></td><td>Win95 Notepad風メモ帳</td><td>localStorage</td></tr>
+    <tr><td><b>Minminchi（猫）</b></td><td>撫でる・餌やり・会話。表情6種。18種のランダム台詞</td><td>SVG pixel art</td></tr>
+    <tr><td><b>Inbox（受信箱）</b></td><td>メッセージ送信・管理者モード・未読バッジ</td><td>Cloudflare D1</td></tr>
+    <tr><td><b>FM 82.8 MHz</b></td><td>1980年代FMチューナー風の代替UI</td><td>別テーマ</td></tr>
+    <tr><td><b>i18n</b></td><td>日本語 / 英語切替</td><td>自作（data-i18n + JSON）</td></tr>
+    <tr><td><b>トレイ</b></td><td>時計 + バッテリー + ON AIRランプ</td><td>Battery Status API</td></tr>
+    <tr><td><b>PWA</b></td><td>ホーム画面追加・オフライン対応</td><td>Service Worker</td></tr>
+  </table>
+  <p class="note">フレームワーク不使用。単一HTML + CSS + バニラJS。依存ゼロ。</p>
+</div>
+
+<!-- ======== Slide 8: 世界観の仕掛け ======== -->
+<div class="slide synergy" data-slide="7">
+  <h1>世界観の仕掛け</h1>
+  <p style="font-size:14px;line-height:1.8">機能の裏に、叙事がある。ファイル名だけで場面が浮かぶ。開かなくても脳内で再生される。</p>
+  <div style="display:flex;gap:12px;margin-top:4px">
+    <div class="inset" style="flex:1;padding:10px 14px;background:#f8f8f8">
+      <p style="font-size:14px;font-weight:bold;margin-bottom:6px">Recycle Bin &mdash; 復元不可（4件）</p>
+      <p style="font-size:13px;line-height:1.9">
+        <b>youth.exe</b> &mdash; 「削除できません。実行中のプロセスが使用しています」<br>
+        <b>あの夏.mp3</b> &mdash; 破損。サイズ:「思い出せないほど大きい」<br>
+        <b>夢の続き.txt</b> &mdash; 「続きを書こうとしたが、言葉が見つからなかった」<br>
+        <b>luv_sic.tmp</b> &mdash; 「一時的なものでした。でも、一時的じゃなかった」
+      </p>
+    </div>
+    <div class="inset" style="flex:1;padding:10px 14px;background:#f8f8f8">
+      <p style="font-size:14px;font-weight:bold;margin-bottom:6px">My Documents &mdash; 私物（9件）</p>
+      <p style="font-size:13px;line-height:1.9">
+        <b>3am_drive.txt</b> / <b>summer_1999.txt</b> / <b>last_night.txt</b><br>
+        <b>frequency_log.txt</b> &mdash; 受信ログという形の詩<br>
+        <b>swordfish_II.log</b> / <b>section9.bat</b> &mdash; SF作品への参照<br>
+        <b>modal_soul.pls</b> &mdash; 再生回数: &infin;「最終再生: 深夜、いつも深夜」<br>
+        <b>playlist.m3u</b> &mdash; Documentsの中。<span style="color:var(--gray)">私物は奥にしまう。</span>
+      </p>
+    </div>
+  </div>
+  <p style="font-size:14px;margin-top:6px">天気の都市名は<b>Tween City</b>。存在しない街の天気予報。全てが一つの世界。機能の堆積じゃない。</p>
+</div>
+
+<!-- ════════════════════════════════════════
+     Phase 3: デモ
+     ════════════════════════════════════════ -->
+
+<!-- ======== Slide 9: デモ前 ======== -->
+<div class="slide synergy" data-slide="8">
+  <h1>実際に見てみましょう</h1>
+  <div style="text-align:center;padding:24px 0">
+    <div style="font-size:32px;font-weight:bold;color:var(--navy)">DEMO</div>
+    <div style="font-size:14px;color:var(--gray);margin-top:8px">実際のサイトを開いて、操作してみます</div>
+  </div>
+  <div class="inset dark" style="text-align:center;padding:16px">
+    <div style="font-family:'VT323',monospace;font-size:16px;color:var(--signal-green)">
+      Connecting to FM 82.8 MHz...<br>
+      <span style="color:var(--muted-green)">Signal strength: |||||||||| OK</span>
+    </div>
+  </div>
+  <div style="text-align:center;padding:8px 0">
+    <span style="font-size:11px;color:var(--gray)">「次へ」を押すと起動します... （たぶん）</span>
+  </div>
+</div>
+
+<!-- ======== Slide 10: BSOD ======== -->
+<div class="slide synergy" data-slide="9"></div>
+
+<!-- ======== Slide 11: デモ復帰 ======== -->
+<div class="slide synergy" data-slide="10">
+  <h1>デモタイム</h1>
+  <div class="inset dark" style="text-align:center;padding:20px">
+    <div style="font-family:'VT323',monospace;font-size:20px;color:var(--signal-green)">
+      SYSTEM RECOVERED
+    </div>
+    <div style="font-family:'VT323',monospace;font-size:14px;color:var(--muted-green);margin-top:4px">
+      All systems nominal. Resuming broadcast...
+    </div>
+  </div>
+  <p style="text-align:center;font-size:15px;font-weight:bold;color:var(--navy);padding:4px 0">
+    皆さんも自分のスマホで開いてみてください
+  </p>
+  <div style="display:flex;align-items:center;justify-content:center;gap:20px;padding:4px 0">
+    <div style="text-align:center">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://tween828.pages.dev/" width="100" height="100" alt="QR" style="border:2px solid var(--dark);image-rendering:pixelated">
+      <div style="font-size:11px;color:var(--gray);margin-top:2px">tween828.pages.dev</div>
+    </div>
+    <div>
+      <a class="link-btn" href="https://tween828.pages.dev/" target="_blank" rel="noopener" style="font-size:14px;height:34px;padding:0 24px">
+        <svg width="14" height="14" viewBox="0 0 15 14" style="image-rendering:pixelated">
+          <line x1="11" y1="0" x2="14" y2="3" stroke="currentColor" stroke-width="1"/>
+          <rect x="0" y="2" width="15" height="12" fill="#c0c0c0" stroke="currentColor" stroke-width="1"/>
+          <rect x="1" y="4" width="6" height="8" fill="#808080"/>
+          <rect x="8" y="4" width="6" height="3" fill="#fff"/>
+          <rect x="8.5" y="5" width="5" height="1.5" fill="#008080"/>
+        </svg>
+        tween828.pages.dev を開く
+      </a>
+    </div>
+  </div>
+  <p class="note" style="text-align:center">※ ブルースクリーンは演出です。PCは無事です。</p>
+</div>
+
+<!-- ======== Slide 12: 交流タイム ======== -->
+<div class="slide synergy" data-slide="11">
+  <h1>交流タイム</h1>
+  <p style="font-size:14px;line-height:1.8;text-align:center">
+    Tweenの掲示板に、何か書いてみてください。<br>
+    感想でも、リクエストでも、匿名で何でも。深夜ラジオのハガキコーナーです。
+  </p>
+  <div style="display:flex;align-items:center;justify-content:center;gap:24px;padding:10px 0">
+    <div style="text-align:center">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://tween828.pages.dev/" width="120" height="120" alt="QR" style="border:3px solid var(--dark);image-rendering:pixelated">
+      <div style="font-size:13px;color:var(--navy);font-weight:bold;margin-top:4px">tween828.pages.dev</div>
+    </div>
+    <div class="inset dark" style="padding:14px 18px;min-width:280px">
+      <p style="font-family:'VT323',monospace;font-size:14px;color:var(--signal-green);line-height:2">
+        1. サイトを開く<br>
+        2. スタートメニュー &rarr; Guestbook<br>
+        3. 名前と一言を書いて投稿<br>
+        <span style="color:var(--muted-green)">※ 匿名OK。何でもどうぞ。</span>
+      </p>
+    </div>
+  </div>
+  <p style="font-size:14px;text-align:center;color:var(--navy);font-weight:bold">
+    投稿されたメッセージをリアルタイムで見てみましょう
+  </p>
+</div>
+
+<!-- ════════════════════════════════════════
+     Phase 4: 技術（後半）
+     ════════════════════════════════════════ -->
+
+<!-- ======== Slide 13: 技術構成 ======== -->
+<div class="slide synergy" data-slide="12">
+  <h1>技術構成</h1>
+  <div class="flow">
+    <div class="flow-box brand">Tween<br><span style="font-size:13px;color:var(--muted-green)">Win95 UI</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-box accent">Cloudflare<br>Worker</div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-box">YouTube<br>Data API</div>
+  </div>
+  <table class="compare-table" style="font-size:12px;margin-top:4px">
+    <tr><th style="width:130px">項目</th><th>詳細</th><th>補足</th></tr>
+    <tr><td>フロントエンド</td><td>単一HTML + CSS + バニラJS</td><td>フレームワークなし。依存ゼロ。app.js 1345行</td></tr>
+    <tr><td>バックエンド</td><td>Cloudflare Worker（エッジ実行）</td><td>YouTube Data API v3のキーを秘匿する中継役</td></tr>
+    <tr><td>APIキー管理</td><td>複数キーをラウンドロビン</td><td>403/429エラー時は次のキーに自動切替。8回で停止</td></tr>
+    <tr><td>キャッシュ（サーバ）</td><td>Cloudflare KV（TTL: 24h）</td><td>ジャンル名をキーにキャッシュ。X-Cache: HIT ヘッダー</td></tr>
+    <tr><td>キャッシュ（ブラウザ）</td><td>localStorage</td><td>KVと二重キャッシュ。オフライン時のフォールバック</td></tr>
+    <tr><td>DB</td><td>Cloudflare D1（SQLite at edge）</td><td>掲示板 + Inbox。Pages Functions経由でCRUD</td></tr>
+    <tr><td>天気</td><td>Open-Meteo API + Geolocation</td><td>Nominatim逆ジオコーディング。30分キャッシュ。東京フォールバック</td></tr>
+    <tr><td>音声</td><td>YouTube iframe API + Web Audio API</td><td>requestAnimationFrameでビジュアライザー描画</td></tr>
+    <tr><td>PWA</td><td>Service Worker + manifest.json</td><td>cache-first（静的）/ network-first（動的）。512px icon</td></tr>
+    <tr><td>i18n</td><td>自作（data-i18n属性 + JSON辞書）</td><td>ブラウザ言語自動検出。JP/EN切替</td></tr>
+    <tr><td>SEO / AIO</td><td>JSON-LD構造化データ + OGP + Twitter Card</td><td>AIクローラー向け文脈提供</td></tr>
+    <tr><td>ホスティング</td><td>Cloudflare Pages</td><td>Git連携自動デプロイ。カスタムドメイン対応</td></tr>
+  </table>
+</div>
+
+<!-- ======== Slide 14: Cloudflare深掘り ======== -->
+<div class="slide synergy" data-slide="13">
+  <h1>Cloudflare Worker + KV + D1</h1>
+  <div style="display:flex;gap:12px">
+    <div style="flex:1">
+      <h2>Worker（API中継）</h2>
+      <ul style="font-size:12px;line-height:1.8">
+        <li>YouTube Data API v3のキーを<b>秘匿</b></li>
+        <li>複数APIキーを<b>ラウンドロビン</b>でローテーション</li>
+        <li>CORS対応 + レート制限</li>
+        <li>エラー時はランダムジャンプで<b>連続エラー回避</b>（8回で停止）</li>
+      </ul>
+      <div class="code-block" style="font-size:12px;margin-top:4px">// ラウンドロビン
+const keys = env.YT_KEYS.split(',');
+const key = keys[requestCount % keys.length];</div>
+    </div>
+    <div style="flex:1">
+      <h2>KV（キャッシュ）</h2>
+      <ul style="font-size:12px;line-height:1.8">
+        <li>検索結果を<b>24時間キャッシュ</b></li>
+        <li>ブラウザ側にもlocalStorageで<b>二重キャッシュ</b></li>
+        <li>API呼び出し回数を大幅削減</li>
+      </ul>
+      <h2 style="margin-top:8px">D1（掲示板 + Inbox）</h2>
+      <ul style="font-size:12px;line-height:1.8">
+        <li>Cloudflare D1 = <b>SQLite at edge</b></li>
+        <li>Pages Functions経由でCRUD</li>
+        <li>API未接続時は<b>localStorage + プリセット</b>にフォールバック</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     Phase 5: Code → Figma
+     ════════════════════════════════════════ -->
+
+<!-- ======== Slide 15: Code→Figma ======== -->
+<div class="slide synergy" data-slide="14">
+  <h1>Code &rarr; Figma パイプライン</h1>
+  <div class="inset" style="background:#ffe4e4;padding:8px 14px">
+    <p style="font-size:12px;line-height:1.7">
+      <b>課題:</b> BBNaviのデザインデータが存在しない。コードだけで完結していた。<br>
+      手動でFigmaに起こす？ &rarr; ページ数が多すぎて現実的でない。<b>&rarr; Claude Codeで自動化。</b>
+    </p>
+  </div>
+  <div class="pipeline" style="margin-top:6px">
+    <div class="pipeline-step">
+      <div class="pipeline-num">1</div>
+      <div class="pipeline-label">PHP / HTML / Reactページをヘッドレスブラウザで取得</div>
+      <div class="pipeline-tech">Puppeteer + getComputedStyle &rarr; JSON</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">2</div>
+      <div class="pipeline-label">疑似要素・アイコンフォントをSVGに変換</div>
+      <div class="pipeline-tech">svg-generator.ts / generate-icon-map.ts</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">3</div>
+      <div class="pipeline-label">Auto Layout用CSS生成 + Visual QA</div>
+      <div class="pipeline-tech">PostCSS + Playwright + Claude Vision + pixelmatch</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-num">4</div>
+      <div class="pipeline-label">Figma MCP経由でキャプチャ・取り込み</div>
+      <div class="pipeline-tech">capture.js &rarr; generate_figma_design（逆方向も対応）</div>
+    </div>
+  </div>
+  <div class="inset" style="background:#f0f8ff;margin-top:4px">
+    <p style="font-size:13px;line-height:1.7">
+      <b>Figma API二層構造：</b> <b>MCP</b>（キャプチャ）+ <b>REST API</b>（CSS値・テキスト抽出の正解ソース）
+    </p>
+  </div>
+</div>
+
+<!-- ======== Slide 16: 比較 + 実践 ======== -->
+<div class="slide synergy" data-slide="15">
+  <h1>自作パイプライン vs HTML to Design</h1>
+  <table class="compare-table" style="font-size:12px">
+    <tr><th style="width:120px"></th><th>HTML to Design</th><th>自作パイプライン</th></tr>
+    <tr><td>::before/::after</td><td>対応状況が不安定</td><td><b>SVGに変換して確実に再現</b></td></tr>
+    <tr><td>アイコンフォント</td><td>フォント検出あり（個別変換は未対応）</td><td><b>SVGマップで自動変換</b></td></tr>
+    <tr><td>Auto Layout</td><td>flex/gridから生成（PRO）</td><td><b>getComputedStyleから推論</b></td></tr>
+    <tr><td>SP版対応</td><td>ビューポート選択で自動</td><td><b>UA偽装 + viewport固定 + 社内CSS最適化</b></td></tr>
+    <tr><td>QA</td><td>なし（別プラグインが必要）</td><td><b>Playwright + Claude Vision + pixelmatch（自動）</b></td></tr>
+    <tr><td>カスタマイズ</td><td>汎用（設定項目で調整）</td><td><b>プロジェクト専用に最適化可能</b></td></tr>
+  </table>
+  <div style="padding:6px 0">
+    <div class="section-label">双方向ワークフロー</div>
+    <div class="flow" style="padding:6px 0">
+      <div class="flow-box">PHP / React<br><span style="font-size:10px;color:var(--gray)">既存コード</span></div>
+      <div class="flow-arrow">&harr;</div>
+      <div class="flow-box accent">Claude Code<br><span style="font-size:10px;opacity:0.7">パイプライン</span></div>
+      <div class="flow-arrow">&harr;</div>
+      <div class="flow-box" style="border-color:#008080;background:#f0efe8"><span style="color:#008080;font-weight:bold">Figma</span><br><span style="font-size:10px;color:var(--gray)">デザインデータ</span></div>
+    </div>
+  </div>
+  <p class="note">自作パイプラインが不要なケースでは、HTML to Designだけで十分。用途に応じて使い分ける。</p>
+</div>
+
+<!-- ════════════════════════════════════════
+     Phase 6: Claude Code + AI
+     ════════════════════════════════════════ -->
+
+<!-- ======== Slide 17: Claude Code カスタマイズ ======== -->
+<div class="slide synergy" data-slide="16">
+  <h1>Claude Code カスタマイズ</h1>
+  <div class="section-label">.claude/ ディレクトリ &mdash; プロジェクト専用ナレッジベース</div>
+  <div style="display:flex;gap:12px;align-items:flex-start">
+    <div style="flex:1">
+      <table class="compare-table" style="font-size:13px">
+        <tr><th style="width:100px">種類</th><th>ファイル</th><th>役割</th></tr>
+        <tr><td><b>コマンド</b></td><td>/figma-react</td><td>Figmaデザイン &rarr; Design Token抽出 &rarr; Reactコンポーネント生成 &rarr; Figmaキャプチャ</td></tr>
+        <tr><td><b>スキル</b></td><td>win95-component-rules</td><td>Named Wrapperパターン、SVGピクセルアート、border-color制御</td></tr>
+        <tr><td><b>リファレンス</b></td><td>win95-design-system</td><td>カラー・フォント・ボーダー一覧。Design Tokenの正解ソース</td></tr>
+        <tr><td><b>リファレンス</b></td><td>component-catalog</td><td>既存コンポーネント一覧。重複生成を防ぐ</td></tr>
+        <tr><td><b>ドキュメント</b></td><td>figma-capture-flow</td><td>Figma MCPキャプチャの手順書</td></tr>
+      </table>
+    </div>
+    <div class="code-block" style="font-size:12px;line-height:1.6;flex:0 0 200px;white-space:pre;font-family:'Courier New',monospace">.claude/
+├── CLAUDE.md
+├── .mcp.json
+├── commands/
+│   └── figma-react.md
+├── skills/
+│   └── win95-component-rules.md
+├── references/
+│   ├── win95-design-system.md
+│   └── component-catalog.md
+└── docs/
+    └── figma-capture-flow.md</div>
+  </div>
+  <p style="font-size:13px;margin-top:4px">
+    <b>仕組み：</b> コマンドが「いつ何をするか」、スキルが「どう実装するか」、リファレンスが「何を使うか」。<br>
+    CLAUDE.md更新 = 全コマンドに即反映。<b>ドキュメントがコードと同等の資産。</b>
+  </p>
+</div>
+
+<!-- ======== Slide 18: AIとの付き合い方 ======== -->
+<div class="slide synergy" data-slide="17">
+  <h1>AIとの付き合い方</h1>
+  <p style="font-size:14px;line-height:2">
+    「AIは人の差をなくす」とよく言われる。<br>
+    確かに入り口は低くなった。でも、<b>使い方の差が、成果の差をさらに大きくする。</b>
+  </p>
+  <div class="inset" style="background:#ffffcc;padding:10px 14px;margin-top:6px">
+    <p style="font-size:13px;line-height:1.8">
+      <b>実例：この資料を作った時の話</b><br>
+      AIに「きっかけスライドを書いて」と頼んだら、<br>
+      「1995年8月24日、深夜0時。世界中の人が家電量販店の前に並んだ」と書いてきた。<br>
+      綺麗だけど、<b>自分の言葉じゃない</b>。嘘くさい。<br>
+      「BGMプレイヤーじゃなくて、あの空気を再現する装置だ」と伝えたら、ようやく芯に近づいた。<br>
+      <span style="color:var(--gray)">AIは方向を出す。でも「これは違う」「こっちだ」と判断するのは人間の仕事。</span>
+    </p>
+  </div>
+  <table class="compare-table" style="font-size:12px;margin-top:6px">
+    <tr><th style="width:200px">AIにできること</th><th>人間がやること</th></tr>
+    <tr><td>大量生成、パターン認識、高速化</td><td><b>「これは違う」と言う</b>。方向修正は人間だけ</td></tr>
+    <tr><td>文脈を渡せば精度が上がる</td><td><b>CLAUDE.md / skills で知識を仕込む</b></td></tr>
+    <tr><td>素材を出す、選択肢を並べる</td><td><b>選ぶ・捨てる・書き直す</b></td></tr>
+  </table>
+  <div class="inset dark" style="padding:10px 14px;margin-top:6px">
+    <p style="font-family:'VT323',monospace;font-size:13px;color:var(--signal-green);line-height:1.8">
+      では少しリラックスして、音楽を聴きながら、ゆっくり過ごしてください。
+    </p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     Phase 7: 締め
+     ════════════════════════════════════════ -->
+
+<!-- ======== Slide 19: まとめ ======== -->
+<div class="slide synergy" data-slide="18">
+  <h1>まとめ</h1>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:10px 0">
+    <div style="text-align:center">
+      <p class="fade-line" data-fade="1" style="font-size:16px;line-height:2.2">音楽を聴く<b>「場所」</b>を作った。</p>
+      <p class="fade-line" data-fade="2" style="font-size:16px;line-height:2.2">場所を作るための<b>「道具」</b>を作った。</p>
+      <p class="fade-line" data-fade="3" style="font-size:16px;line-height:2.2">道具がなかったから<b>「仕組み」</b>を作った。</p>
+    </div>
+    <div class="fade-line inset dark" data-fade="4" style="text-align:center;padding:28px 20px">
+      <div style="font-family:'VT323',monospace;font-size:32px;color:var(--white);letter-spacing:3px">
+        「ないなら作る」
+      </div>
+      <div style="font-family:'VT323',monospace;font-size:14px;color:var(--muted-green);margin-top:8px">
+        場所 &rarr; 道具 &rarr; 仕組み
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== Slide 20: 終了 ======== -->
+<div class="slide synergy" data-slide="19">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:20px 0">
+    <div style="text-align:center">
+      <div style="font-size:18px;font-weight:bold;color:var(--navy);line-height:1.6">
+        ありがとうございました
+      </div>
+      <div style="font-size:13px;color:var(--text);margin-top:8px;line-height:1.8">
+        質問・感想があればどうぞ。<br>
+        発表を終了するには「×」ボタンを押してください。
+      </div>
+    </div>
+
+    <div style="width:100%;border-top:1px solid var(--gray);border-bottom:1px solid var(--white);margin:4px 0"></div>
+
+    <div class="inset dark" style="width:100%;text-align:center;padding:14px">
+      <div style="font-family:'VT323',monospace;font-size:15px;color:var(--signal-green)">
+        C:\TWEEN&gt; echo "Thank you for listening!"<br>
+        <span style="color:var(--muted-green)">FM 82.8 MHz — signing off. Goodnight.</span>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="link-btn" href="https://tween828.pages.dev/" target="_blank" rel="noopener" style="font-size:13px;height:32px;padding:0 20px">
+        <img src="assets/icons/tween.svg" width="16" height="16" alt="" style="margin-right:2px">
+        tween828.pages.dev
+      </a>
+    </div>
+
+    <div style="font-size:11px;color:var(--gray);text-align:center">
+      GMOインターネット　NSフロント　黄銘敏
+    </div>
+  </div>
+</div>
+</div>
+
+    <!-- Navigation -->
+    <div class="slide-nav">
+      <button class="nav-btn" id="btn-prev" onclick="prevSlide()" disabled>&#x2190; 戻る</button>
+      <span class="slide-counter" id="slide-counter">1 / 19</span>
+      <button class="nav-btn" id="btn-next" onclick="nextSlide()">次へ &#x2192;</button>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span id="status-text">準備完了</span>
+    <span style="flex:0;min-width:90px;text-align:center" id="status-slide">Slide 1/19</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     My Computer
+     ============================================================ -->
+<div class="app-window" id="app-mycomputer">
+  <div class="title-bar" data-drag="app-mycomputer">
+    <span class="title-text">My Computer</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeApp('mycomputer')">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- Menu bar -->
+  <div class="app-menubar">
+    <span class="app-menu-item">ファイル(F)</span>
+    <span class="app-menu-item">編集(E)</span>
+    <span class="app-menu-item">表示(V)</span>
+    <span class="app-menu-item">ヘルプ(H)</span>
+  </div>
+  <!-- Address bar -->
+  <div class="app-addressbar">
+    <span style="font-size:10px;color:var(--gray);margin-right:4px">アドレス:</span>
+    <div class="app-address-input">My Computer</div>
+  </div>
+  <div class="app-body app-grid">
+    <div class="app-file-icon" ondblclick="showAppMsg('mycomputer','3.5 インチ FD (A:)\n\nドライブにディスクがありません。','!')">
+      <svg width="32" height="32" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="2" y="1" width="12" height="14" fill="#404040" stroke="#000" stroke-width="0.5"/>
+        <rect x="4" y="1" width="8" height="5" fill="#c0c0c0"/>
+        <rect x="6" y="2" width="4" height="3" fill="#808080"/>
+        <rect x="3" y="8" width="10" height="6" fill="#808080"/>
+        <rect x="4" y="9" width="8" height="4" fill="#fff"/>
+        <line x1="5" y1="10.5" x2="10" y2="10.5" stroke="#c0c0c0" stroke-width="0.5"/>
+        <line x1="5" y1="11.5" x2="10" y2="11.5" stroke="#c0c0c0" stroke-width="0.5"/>
+      </svg>
+      <span>3.5 FD (A:)</span>
+    </div>
+    <div class="app-file-icon">
+      <svg width="32" height="32" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="1" y="3" width="14" height="12" fill="#c0c0c0" stroke="#000" stroke-width="0.5"/>
+        <rect x="2" y="4" width="12" height="10" fill="#808080"/>
+        <rect x="4" y="7" width="8" height="5" fill="#c0c0c0"/>
+        <text x="6" y="11" fill="#000" font-size="5" font-family="Arial" font-weight="bold">C:</text>
+      </svg>
+      <span>(C:)</span>
+    </div>
+    <div class="app-file-icon" ondblclick="window.open('https://tween828.pages.dev/','_blank')">
+      <svg width="32" height="32" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="1" y="3" width="14" height="12" fill="#c0c0c0" stroke="#000" stroke-width="0.5"/>
+        <rect x="2" y="4" width="12" height="10" fill="#808080"/>
+        <rect x="4" y="7" width="8" height="5" fill="#c0c0c0"/>
+        <text x="5.5" y="11" fill="#000080" font-size="5" font-family="Arial" font-weight="bold">D:</text>
+      </svg>
+      <span>Tween (D:)</span>
+    </div>
+    <div class="app-file-icon">
+      <svg width="32" height="28" viewBox="0 0 16 14" style="image-rendering:pixelated">
+        <rect x="1" y="0" width="14" height="10" fill="#c0c0c0" stroke="#000" stroke-width="0.7"/>
+        <rect x="2" y="1" width="12" height="4" fill="#000080"/>
+        <rect x="4" y="2" width="3" height="2" fill="#008080"/>
+        <rect x="8" y="2" width="5" height="2" fill="#c0c0c0"/>
+        <rect x="2" y="6" width="12" height="3" fill="#fff"/>
+        <rect x="1" y="11" width="14" height="3" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+      </svg>
+      <span>コントロール<br>パネル</span>
+    </div>
+    <div class="app-file-icon">
+      <svg width="32" height="32" viewBox="0 0 16 16" style="image-rendering:pixelated">
+        <rect x="2" y="2" width="12" height="10" fill="#c0c0c0" stroke="#000" stroke-width="0.5"/>
+        <rect x="3" y="3" width="10" height="8" fill="#fff"/>
+        <rect x="4" y="4" width="4" height="3" fill="#ffff00"/>
+        <rect x="9" y="4" width="4" height="3" fill="#0000ff"/>
+        <rect x="4" y="8" width="4" height="2" fill="#ff0000"/>
+        <rect x="9" y="8" width="4" height="2" fill="#00ff00"/>
+        <rect x="5" y="12" width="6" height="2" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+      </svg>
+      <span>プリンタ</span>
+    </div>
+  </div>
+  <div class="app-statusbar">5 個のオブジェクト</div>
+</div>
+
+<!-- ============================================================
+     Recycle Bin
+     ============================================================ -->
+<div class="app-window" id="app-recycle">
+  <div class="title-bar" data-drag="app-recycle">
+    <span class="title-text">Recycle Bin</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeApp('recycle')">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="app-menubar">
+    <span class="app-menu-item">ファイル(F)</span>
+    <span class="app-menu-item">編集(E)</span>
+    <span class="app-menu-item">表示(V)</span>
+    <span class="app-menu-item">ヘルプ(H)</span>
+  </div>
+  <div class="app-body app-list">
+    <div class="app-list-header">
+      <span style="flex:2">名前</span>
+      <span style="flex:1">元の場所</span>
+      <span style="flex:1">削除日</span>
+      <span style="flex:1">サイズ</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:2">🗎 deadline_守れなかった.xls</span>
+      <span style="flex:1">C:\仕事</span>
+      <span style="flex:1">2025/12/31</span>
+      <span style="flex:1">48 KB</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:2">🗎 やる気.dll</span>
+      <span style="flex:1">C:\Windows\System</span>
+      <span style="flex:1">2026/01/06</span>
+      <span style="flex:1">0 KB</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:2">🗎 sleep_schedule.ini</span>
+      <span style="flex:1">C:\生活</span>
+      <span style="flex:1">2026/02/14</span>
+      <span style="flex:1">2 KB</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:2">🗎 フレームワーク不要論.doc</span>
+      <span style="flex:1">C:\思想</span>
+      <span style="flex:1">2026/03/01</span>
+      <span style="flex:1">128 KB</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:2">🗎 旧ogp_spectrum付き.svg</span>
+      <span style="flex:1">C:\Tween</span>
+      <span style="flex:1">2026/03/19</span>
+      <span style="flex:1">12 KB</span>
+    </div>
+  </div>
+  <div class="app-statusbar">5 個のオブジェクト &nbsp; | &nbsp; 合計: 190 KB</div>
+</div>
+
+<!-- ============================================================
+     Network Neighborhood
+     ============================================================ -->
+<div class="app-window" id="app-network">
+  <div class="title-bar" data-drag="app-network">
+    <span class="title-text">ネットワーク コンピュータ</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeApp('network')">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="app-menubar">
+    <span class="app-menu-item">ファイル(F)</span>
+    <span class="app-menu-item">表示(V)</span>
+    <span class="app-menu-item">ヘルプ(H)</span>
+  </div>
+  <div class="app-body app-grid">
+    <div class="app-file-icon">
+      <img src="assets/icons/computer.svg" width="32" height="30" alt="">
+      <span>HARUKI-PC</span>
+    </div>
+    <div class="app-file-icon">
+      <img src="assets/icons/computer.svg" width="32" height="30" alt="">
+      <span>FUYUYA-PC</span>
+    </div>
+    <div class="app-file-icon">
+      <img src="assets/icons/computer.svg" width="32" height="30" alt="">
+      <span>INOSHISHI</span>
+    </div>
+    <div class="app-file-icon">
+      <img src="assets/icons/computer.svg" width="32" height="30" alt="">
+      <span>SHAKEN</span>
+    </div>
+    <div class="app-file-icon">
+      <img src="assets/icons/computer.svg" width="32" height="30" alt="">
+      <span>MINMIN-SV</span>
+    </div>
+  </div>
+  <div class="app-statusbar">5 台のコンピュータが見つかりました</div>
+</div>
+
+<!-- ============================================================
+     README.txt — Notepad
+     ============================================================ -->
+<div class="app-window app-notepad" id="app-notepad">
+  <div class="title-bar" data-drag="app-notepad">
+    <span class="title-text">README.txt - メモ帳</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeApp('notepad')">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="app-menubar">
+    <span class="app-menu-item">ファイル(F)</span>
+    <span class="app-menu-item">編集(E)</span>
+    <span class="app-menu-item">検索(S)</span>
+    <span class="app-menu-item">ヘルプ(H)</span>
+  </div>
+  <div class="app-body app-notepad-body">
+    <pre class="notepad-text">========================================
+  README.txt — Tween 82.8
+========================================
+
+■ これは何？
+  Tween 82.8 は「現実と夢の狭間」に流れる
+  FM ラジオをコンセプトにした BGM プレイヤー。
+  Windows 95 風の UI で、44ジャンルの音楽を
+  ワンクリックで再生できる。
+
+■ 技術スタック
+  - フロントエンド: 単一HTML + CSS + バニラJS
+  - バックエンド:   Cloudflare Worker
+  - キャッシュ:     Cloudflare KV (TTL: 24h)
+  - ホスティング:   Cloudflare Pages
+
+■ この資料について
+  この発表資料もWin95 UIで作られています。
+  フレームワーク不使用。全てバニラJS。
+  再帰的ですね。
+
+■ サイト
+  https://tween828.pages.dev/
+
+========================================
+  (C) 2026 Tween 82.8
+========================================</pre>
+  </div>
+</div>
+
+<!-- ============================================================
+     My Documents
+     ============================================================ -->
+<div class="app-window" id="app-mydocs">
+  <div class="title-bar" data-drag="app-mydocs">
+    <span class="title-text">My Documents</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeApp('mydocs')">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="app-menubar">
+    <span class="app-menu-item">ファイル(F)</span>
+    <span class="app-menu-item">編集(E)</span>
+    <span class="app-menu-item">表示(V)</span>
+  </div>
+  <div class="app-body app-grid">
+    <div class="app-file-icon">
+      <svg width="32" height="32" viewBox="0 0 13 15" style="image-rendering:pixelated">
+        <rect x="0" y="0" width="10" height="15" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+        <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+        <rect x="10" y="3" width="3" height="12" fill="#ffffff" stroke="#808080" stroke-width="1"/>
+        <rect x="2" y="4" width="6" height="1" fill="#000080"/>
+        <rect x="2" y="6" width="8" height="1" fill="#808080"/>
+        <rect x="2" y="8" width="7" height="1" fill="#808080"/>
+      </svg>
+      <span>3am_drive.txt</span>
+    </div>
+    <div class="app-file-icon">
+      <svg width="32" height="32" viewBox="0 0 13 15" style="image-rendering:pixelated">
+        <rect x="0" y="0" width="10" height="15" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+        <polygon points="10,0 13,3 10,3" fill="#ffeeaa" stroke="#808080" stroke-width="0.8"/>
+        <rect x="10" y="3" width="3" height="12" fill="#fffff0" stroke="#808080" stroke-width="1"/>
+        <rect x="5" y="4" width="1" height="4" fill="#000080"/>
+        <rect x="6" y="4" width="2" height="1" fill="#000080"/>
+        <rect x="3" y="7" width="2" height="2" fill="#000080"/>
+      </svg>
+      <span>playlist.m3u</span>
+    </div>
+    <div class="app-file-icon">
+      <svg width="32" height="32" viewBox="0 0 13 15" style="image-rendering:pixelated">
+        <rect x="0" y="0" width="10" height="15" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+        <polygon points="10,0 13,3 10,3" fill="#c0c0c0" stroke="#808080" stroke-width="0.8"/>
+        <rect x="10" y="3" width="3" height="12" fill="#e8e8e8" stroke="#808080" stroke-width="1"/>
+        <line x1="2" y1="4" x2="8" y2="10" stroke="#808080" stroke-width="1"/>
+        <line x1="2" y1="10" x2="8" y2="4" stroke="#808080" stroke-width="1"/>
+      </svg>
+      <span>youth.exe</span>
+    </div>
+  </div>
+  <div class="app-statusbar">3 個のオブジェクト</div>
+</div>
+
+<!-- ============================================================
+     MS-DOS Prompt
+     ============================================================ -->
+<div class="app-window" id="app-msdos">
+  <div class="title-bar" data-drag="app-msdos" style="background:linear-gradient(to right, #000, #404040)">
+    <span class="title-text">MS-DOS Prompt</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeApp('msdos')">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="app-body" style="background:#000;color:#c0c0c0;font-family:'Courier New',monospace;font-size:11px;line-height:1.6;padding:8px 10px;min-height:140px">
+    <div>Microsoft(R) Windows 95</div>
+    <div>(C)Copyright Microsoft Corp 1981-1995.</div>
+    <div style="margin-top:8px">C:\WINDOWS> <span style="color:#00ff00">cd C:\Tween</span></div>
+    <div style="margin-top:4px">C:\Tween> <span style="color:#00ff00">dir</span></div>
+    <div style="margin-top:4px;color:#808080"> Volume in drive C is TWEEN828</div>
+    <div style="color:#808080"> Directory of C:\Tween</div>
+    <div style="margin-top:4px">
+      <span style="color:#c0c0c0">INDEX    HTM      14,208  03-19-26  3:17a</span><br>
+      <span style="color:#c0c0c0">WORKER   JS        2,048  03-19-26  3:17a</span><br>
+      <span style="color:#c0c0c0">STYLE    CSS       8,192  03-19-26  3:17a</span><br>
+      <span style="color:#c0c0c0">APP      JS        6,144  03-19-26  3:17a</span>
+    </div>
+    <div style="margin-top:4px;color:#808080">         4 file(s)     30,592 bytes</div>
+    <div style="margin-top:4px">C:\Tween> <span style="color:#00ff00;animation:blink 1s step-end infinite">_</span></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     Inbox
+     ============================================================ -->
+<div class="app-window" id="app-inbox">
+  <div class="title-bar" data-drag="app-inbox">
+    <span class="title-text">受信トレイ - Microsoft Exchange</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeApp('inbox')">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="app-menubar">
+    <span class="app-menu-item">ファイル(F)</span>
+    <span class="app-menu-item">編集(E)</span>
+    <span class="app-menu-item">表示(V)</span>
+    <span class="app-menu-item">メッセージ(M)</span>
+  </div>
+  <div class="app-body app-list">
+    <div class="app-list-header">
+      <span style="flex:0 0 20px"></span>
+      <span style="flex:1">差出人</span>
+      <span style="flex:2">件名</span>
+      <span style="flex:0 0 80px">受信日時</span>
+    </div>
+    <div class="app-list-row" style="font-weight:bold">
+      <span style="flex:0 0 20px;font-size:9px">&#9993;</span>
+      <span style="flex:1">CS事務局</span>
+      <span style="flex:2">【クリエイティブシナジー】発表資料の最終確認</span>
+      <span style="flex:0 0 80px">03/29 10:00</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:0 0 20px;font-size:9px;opacity:0.4">&#9993;</span>
+      <span style="flex:1">Cloudflare</span>
+      <span style="flex:2">Deploy successful: tween828.pages.dev (v2.4)</span>
+      <span style="flex:0 0 80px">03/28 23:45</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:0 0 20px;font-size:9px;opacity:0.4">&#9993;</span>
+      <span style="flex:1">Claude Code</span>
+      <span style="flex:2">Code&rarr;Figma: 全26スライド生成完了 (Visual QA 98.2%)</span>
+      <span style="flex:0 0 80px">03/28 15:30</span>
+    </div>
+    <div class="app-list-row">
+      <span style="flex:0 0 20px;font-size:9px;opacity:0.4">&#9993;</span>
+      <span style="flex:1">Figma</span>
+      <span style="flex:2">[Tween 82.8] UI Component Parts &mdash; 10カテゴリ取り込み完了</span>
+      <span style="flex:0 0 80px">03/27 18:20</span>
+    </div>
+  </div>
+  <div class="app-statusbar">4 通のメッセージ &nbsp; | &nbsp; 未読: 1</div>
+</div>
+
+<!-- ============================================================
+     App message dialog (reusable)
+     ============================================================ -->
+<div class="error-dialog" id="app-msg-dialog" style="z-index:60000">
+  <div class="title-bar" style="cursor:default">
+    <span class="title-text" id="app-msg-title">エラー</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="closeAppMsg()">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="error-body">
+    <div class="error-icon" id="app-msg-icon"></div>
+    <div class="error-msg" id="app-msg-text"></div>
+  </div>
+  <div class="error-btns">
+    <button onclick="closeAppMsg()">OK</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     BSOD
+     ============================================================ -->
+<div class="bsod" id="bsod" onclick="dismissBsod()">
+  <div class="bsod-title" id="bsod-title">&nbsp;SST資料.exe&nbsp;</div>
+  <div class="bsod-text">
+    例外 0E が VXD PRESENTATION(05) + 00001A4F で発生しました。<br>
+    現在のアプリケーションを終了します。<br><br>
+    *  どれかキーを押すとデモに戻ります。<br>
+    *  Ctrl+Alt+Delを押すと発表が終わります。<br><br>
+    どれかキーを押すと、続行します。<span class="bsod-cursor">_</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     Error Dialog
+     ============================================================ -->
+<div class="error-dialog" id="error-dialog">
+  <div class="title-bar" style="cursor:default">
+    <span class="title-text" id="error-title">SST資料.exe</span>
+    <div class="title-btns">
+      <button class="title-btn" onclick="dismissError()">
+        <svg width="7" height="7" viewBox="0 0 7 7" style="image-rendering:pixelated;display:block"><path d="M0.5,0.5 L6.5,6.5 M6.5,0.5 L0.5,6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="error-body">
+    <div class="error-icon" id="error-icon">&#x26A0;</div>
+    <div class="error-msg" id="error-msg">エラーが発生しました。</div>
+  </div>
+  <div class="error-btns" id="error-btns">
+    <button onclick="dismissError()">OK</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     Shutdown
+     ============================================================ -->
+<div class="shutdown" id="shutdown">
+  <div class="shutdown-box">
+    <div class="title-bar" style="cursor:default">
+      <span class="title-text">Windows のシャットダウン</span>
+    </div>
+    <div class="shutdown-body">
+      <div class="shutdown-icon"><svg width="40" height="36" viewBox="0 0 15 14" style="image-rendering:pixelated"><rect x="0" y="0" width="15" height="10" fill="#c0c0c0" stroke="#000" stroke-width="1"/><rect x="1" y="1" width="13" height="8" fill="#000080"/><rect x="5" y="10" width="5" height="1.5" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/><rect x="1" y="11.5" width="13" height="2.5" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/></svg></div>
+      <div class="shutdown-msg">
+        この発表を終了しますか？<br><br>
+        <span style="font-size:11px;color:var(--gray)">「OK」を押すと安全にシャットダウンします。</span>
+      </div>
+    </div>
+    <div class="shutdown-btns">
+      <button onclick="doShutdown()">OK</button>
+      <button onclick="cancelShutdown()">キャンセル</button>
+    </div>
+  </div>
+</div>
+
+<div class="shutdown-final" id="shutdown-final" onclick="this.classList.remove('active')">
+  <!-- Win95 authentic shutdown: dark screen with logo + orange text -->
+  <div class="shutdown-final-inner">
+    <!-- Windows 95 logo (pixel art) -->
+    <div class="shutdown-logo">
+      <svg width="240" height="40" viewBox="0 0 120 20" style="image-rendering:pixelated">
+        <!-- Windows flag -->
+        <rect x="0" y="1" width="8" height="8" fill="#ff0000"/>
+        <rect x="9" y="1" width="8" height="8" fill="#00bb00"/>
+        <rect x="0" y="10" width="8" height="8" fill="#0000ff"/>
+        <rect x="9" y="10" width="8" height="8" fill="#ffcc00"/>
+        <!-- "Windows 95" text -->
+        <text x="24" y="14" fill="#c0c0c0" font-family="Arial,sans-serif" font-size="10" font-weight="bold">Windows 95</text>
+      </svg>
+    </div>
+    <div class="shutdown-final-line"></div>
+    <div class="shutdown-final-text">
+      コンピュータの電源を切る準備ができました。
+    </div>
+    <div class="shutdown-final-sub">
+      電源スイッチを切っても安全です。
+    </div>
+    <div class="shutdown-final-line" style="margin-top:32px"></div>
+    <div class="shutdown-final-credits">
+      <span id="shutdown-credits-title">SST資料.exe — Tween 82.8 社内勉強会</span><br>
+      ご清聴ありがとうございました
+    </div>
+    <div class="shutdown-final-hint">
+      （クリック or キーで復帰）
+    </div>
+  </div>
+</div>
+
+<div class="blackout-overlay" id="blackout">
+  <div id="bo-terminal" class="blackout-terminal"></div>
+</div>
+
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>

@@ -288,19 +288,13 @@ body {
   overflow-y: auto;
 }
 .win-window.maximized .slide-nav {
-  padding: 8px 20px;
-}
-.win-window.maximized .nav-btn {
   display: none;
 }
-.win-window.maximized .slide-counter {
-  font-size: 14px;
-  width: 100%;
-  text-align: center;
-}
 .win-window.maximized .status-bar {
-  font-size: 13px;
-  padding: 3px 8px;
+  display: none;
+}
+.win-window.maximized .progress-wrap {
+  display: none;
 }
 .win-window.maximized .title-bar {
   padding: 4px 6px;

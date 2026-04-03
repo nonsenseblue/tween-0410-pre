@@ -67,11 +67,10 @@ const SLIDE_STATUS_SST = [
 const SLIDE_STATUS_SYNERGY = [
   '準備完了', 'アジェンダ', 'きっかけ', 'Tween 82.8',
   'なぜ Windows 95？', 'Win95 デザイン原則',
-  '全機能一覧', '世界観の仕掛け',
-  'デモ準備中...', 'FATAL ERROR', 'デモタイム',
-  '交流タイム',
+  'デモ準備中...', 'FATAL ERROR', '全機能デモ',
+  '世界観の仕掛け', '交流タイム',
   '技術構成', 'Cloudflare深掘り',
-  'Code \u2192 Figma', '比較 + 実践',
+  'Code \u2192 Figma（Tween）', 'BBNaviパイプライン', '比較 + 実践',
   'Claude Code', 'AIとの付き合い方',
   'まとめ', 'ご清聴ありがとうございました'
 ];
@@ -82,8 +81,8 @@ const SLIDE_TITLES_SST = {
   6: 'SST資料.exe \u2014 デモタイム'
 };
 const SLIDE_TITLES_SYNERGY = {
-  9: 'シナジー資料.exe \u2014 [応答なし]',
-  10: 'シナジー資料.exe \u2014 デモタイム'
+  7: 'シナジー資料.exe \u2014 [応答なし]',
+  8: 'シナジー資料.exe \u2014 デモタイム'
 };
 let SLIDE_TITLES = SLIDE_TITLES_SST;
 
@@ -116,9 +115,9 @@ const SLIDE_ERRORS_SST = {
   9:  { title: 'explorer.exe',    icon: 'i', msg: 'ちなみにこの資料自体が\nWin95 UIで作られています。\n\n再帰的ですね。', btns: ['なるほど'] }
 };
 const SLIDE_ERRORS_SYNERGY = {
-  8:  { title: 'demo_env.exe',    icon: '!', msg: 'デモ環境に接続しています...\n本当に続行しますか？', btns: ['はい', 'はい'] },
+  6:  { title: 'demo_env.exe',    icon: '!', msg: 'デモ環境に接続しています...\n本当に続行しますか？', btns: ['はい', 'はい'] },
   5:  { title: 'explorer.exe',    icon: 'i', msg: 'ちなみにこの資料自体が\nWin95 UIで作られています。\n\n再帰的ですね。', btns: ['なるほど'] },
-  14: { title: 'design_data.fig', icon: 'X', msg: 'デザインデータが見つかりません。\n\nパス: C:\\BBNAVI\\design\\*.fig\n\n0 個のファイルが見つかりました。', btns: ['OK'] }
+  13: { title: 'design_data.fig', icon: 'X', msg: 'デザインデータが見つかりません。\n\nパス: C:\\BBNAVI\\design\\*.fig\n\n0 個のファイルが見つかりました。', btns: ['OK'] }
 };
 let slideErrors = SLIDE_ERRORS_SST;
 
@@ -250,13 +249,15 @@ var $boTerminal = document.getElementById('bo-terminal');
 var boLines = [
   { text: '1990年代後半。', cls: 'dim' },
   { text: 'バブルが弾けて、大人たちは「もうダメだ」と言ってた。', cls: '' },
-  { text: '子供はそれを聞きながら育った。', cls: '' },
+  { text: '青春のまっただ中にいた人たちは、それを聞きながら育った。', cls: '' },
   { text: '将来への漠然とした不安。', cls: '' },
   { text: '', cls: '' },
   { text: 'でも、深夜だけは自由だった。', cls: 'bright' },
   { text: '', cls: '' },
   { text: 'エヴァンゲリオン。カウボーイビバップ。', cls: 'dim' },
   { text: '残酷な天使のテーゼが流れるテレビの前。Tank!のカウントが始まるWOWOWの深夜。', cls: '' },
+  { text: '攻殻機動隊。PERFECT BLUE。パプリカ。', cls: 'dim' },
+  { text: '95年の日本アニメが、99年のハリウッドを作った。夢の中の映像が、現実を追い越した。', cls: '' },
   { text: '耳をすませば。Love Letter。リリイ・シュシュのすべて。', cls: 'dim' },
   { text: '小樽から届いた手紙。イヤホンの中だけが逃げ場だった教室。', cls: '' },
   { text: 'オールナイトニッポン。JET STREAM。', cls: 'dim' },
@@ -300,12 +301,14 @@ function triggerBlackout() {
     if (line.text === '') {
       el.innerHTML = '&nbsp;';
       $boTerminal.appendChild(el);
+      $boTerminal.scrollTop = $boTerminal.scrollHeight;
       boTimers.push(setTimeout(typeLine, 300));
       return;
     }
 
     $boTerminal.appendChild(el);
     el.appendChild(cursor);
+    $boTerminal.scrollTop = $boTerminal.scrollHeight;
     var chars = line.text.split('');
     var charIdx = 0;
     var speed = 35;
@@ -319,6 +322,7 @@ function triggerBlackout() {
       } else {
         /* Line done, pause then next line */
         cursor.remove();
+        $boTerminal.scrollTop = $boTerminal.scrollHeight;
         boTimers.push(setTimeout(typeLine, 400));
       }
     }
@@ -348,7 +352,7 @@ function showSlide(n) {
   var target = container.querySelector('[data-slide="' + n + '"]');
   if (target) target.classList.add('active');
 
-  var bsodSlide = (currentMode === 'synergy') ? 9 : BSOD_SLIDE;
+  var bsodSlide = (currentMode === 'synergy') ? 7 : BSOD_SLIDE;
   if (n === bsodSlide && SKIP_SLIDES.indexOf(bsodSlide) === -1) {
     setTimeout(function() { $bsod.classList.add('active'); }, 400);
   }
@@ -434,7 +438,7 @@ function prevSlide() {
 /* ── BSOD ── */
 function dismissBsod() {
   $bsod.classList.remove('active');
-  var resume = (currentMode === 'synergy') ? 10 : BSOD_RESUME;
+  var resume = (currentMode === 'synergy') ? 8 : BSOD_RESUME;
   currentSlide = resume;
   showSlide(currentSlide);
 }
@@ -593,14 +597,14 @@ var MINMINCHI_SLIDE_REACTIONS = {
   3:  { msg: '場所、大事にゃ',         face: 'happy',     anim: 'bounce' },
   4:  { msg: 'Win95ｻｲｺｰ！',           face: 'happy',     anim: 'spin' },
   5:  { msg: 'ボーダー！ボーダー！',   face: 'wink',      anim: 'bounce' },
-  6:  { msg: '11個もあるの！？',       face: 'surprised', anim: 'jump' },
-  7:  { msg: 'youth.exe...泣',        face: 'love',      anim: 'sway' },
-  8:  { msg: 'デモ！デモ！',           face: 'happy',     anim: 'jump' },
-  10: { msg: 'ﾌﾞﾙｰｽｸﾘｰﾝこわい...',   face: 'surprised', anim: 'shake' },
-  11: { msg: 'みんな書いてにゃ〜',     face: 'happy',     anim: 'bounce' },
-  12: { msg: 'ここから技術の話',       face: 'normal',    anim: 'bounce' },
-  13: { msg: 'Cloudflareすごい',       face: 'happy',     anim: 'spin' },
-  14: { msg: 'パイプライン長い...',    face: 'sleepy',    anim: 'wiggle' },
+  6:  { msg: 'デモ！デモ！',           face: 'happy',     anim: 'jump' },
+  8:  { msg: '11個もあるの！？',       face: 'surprised', anim: 'jump' },
+  9:  { msg: 'youth.exe...泣',        face: 'love',      anim: 'sway' },
+  10: { msg: 'みんな書いてにゃ〜',     face: 'happy',     anim: 'bounce' },
+  11: { msg: 'ここから技術の話',       face: 'normal',    anim: 'bounce' },
+  12: { msg: 'Cloudflareすごい',       face: 'happy',     anim: 'spin' },
+  13: { msg: 'パイプライン長い...',    face: 'sleepy',    anim: 'wiggle' },
+  14: { msg: 'BBNaviはもっと長い！',   face: 'surprised', anim: 'shake' },
   15: { msg: '自作の方が強い！',       face: 'wink',      anim: 'bounce' },
   16: { msg: '.claudeの中身〜',        face: 'normal',    anim: 'bounce' },
   17: { msg: 'AIは道具にゃ',           face: 'wink',      anim: 'bounce' },

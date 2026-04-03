@@ -809,19 +809,18 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
       <table style="font-size:14px;line-height:2.4;border-spacing:6px 0">
         <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">1.</td><td>きっかけ / 「場所」を作る</td></tr>
         <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">2.</td><td>なぜ Windows 95？</td></tr>
-        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">3.</td><td>Tween 82.8 の全機能</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">3.</td><td>デモ + 全機能紹介</td></tr>
         <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">4.</td><td>世界観の仕掛け</td></tr>
-        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">5.</td><td>デモ</td></tr>
       </table>
     </div>
     <div>
       <h2 style="text-align:center;margin-bottom:10px">後半（技術者向け）</h2>
       <table style="font-size:14px;line-height:2.4;border-spacing:6px 0">
-        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">6.</td><td>技術構成 &mdash; Cloudflare</td></tr>
-        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">7.</td><td>Code &rarr; Figma パイプライン</td></tr>
-        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">8.</td><td>Claude Code カスタマイズ</td></tr>
-        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">9.</td><td>AIとの付き合い方</td></tr>
-        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">10.</td><td>まとめ</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">5.</td><td>技術構成 &mdash; Cloudflare</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">6.</td><td>Code &rarr; Figma パイプライン</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">7.</td><td>Claude Code カスタマイズ</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">8.</td><td>AIとの付き合い方</td></tr>
+        <tr><td style="color:var(--navy);font-weight:bold;text-align:right;padding-right:8px">9.</td><td>まとめ</td></tr>
       </table>
     </div>
   </div>
@@ -840,7 +839,7 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
   <div class="inset dark" style="padding:14px 18px">
     <p style="font-family:'VT323',monospace;font-size:12px;color:var(--signal-green);line-height:2">
       1990年代後半。バブルが弾けて、大人たちは「もうダメだ」と言ってた。<br>
-      子供はそれを聞きながら育った。将来への漠然とした不安。<br>
+      青春のまっただ中にいた人たちは、それを聞きながら育った。将来への漠然とした不安。<br>
       でも、<b>深夜だけは自由だった</b>。<br>
       深夜ラジオ、深夜アニメ、深夜のネット。<br>
       大人が寝た後の時間だけが、自分だけの世界だった。
@@ -870,7 +869,7 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
     <p style="font-family:'VT323',monospace;font-size:13px;color:var(--signal-green);line-height:2">
       <b>Tween</b> = between。現実と夢の狭間。<br>
       <b>82.8</b> = 太陽系が銀河を公転する速度（82.8万 km/h）をFM周波数に見立てた。<br>
-      存在しない周波数。受信できないラジオ局。天気の都市名は <b>Tween City</b>。
+      存在しない周波数。どこでも受信できないラジオ局。
     </p>
   </div>
   <p style="font-size:14px;line-height:1.9;margin-top:6px">
@@ -922,27 +921,70 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
 <!-- ======== Slide 6: Win95 デザイン原則 ======== -->
 <div class="slide synergy" data-slide="5">
   <h1>Win95 デザイン原則</h1>
-  <table class="compare-table" style="font-size:12px">
-    <tr><th style="width:150px">原則</th><th>内容</th></tr>
-    <tr><td><b>光源は左上</b></td><td>全UI共通。左と上のボーダーが明るく、右と下が暗い。これだけで立体が生まれる</td></tr>
-    <tr><td><b>2色で3次元</b></td><td>グラデーションもドロップシャドウも不要。#fff と #808080 の2色で出っ張り・凹みを表現</td></tr>
-    <tr><td><b>状態は反転で伝える</b></td><td>:active でボーダー色を反転 = 物理ボタンの押下感。hover変色ではなく凹む</td></tr>
-    <tr><td><b>色は5色</b></td><td>#c0c0c0 / #fff / #808080 / #404040 / #000080。これ以外は使わない</td></tr>
-    <tr><td><b>フォントは1つ</b></td><td>MS Sans Serif 11px。例外はモノスペースのみ（ターミナル・時計）</td></tr>
-    <tr><td><b>区切りは二重線</b></td><td>divider = gray線 + white線の2本セット。セパレータも立体で表現</td></tr>
-    <tr><td><b>空間は階層で作る</b></td><td>デスクトップ &gt; ウィンドウ &gt; メニュー &gt; ダイアログ。z-indexで空間の奥行きを再現</td></tr>
-    <tr><td><b>プログレスはブロック</b></td><td>滑らかなバーではなく、ネイビーのブロックが積み重なる。デジタルな質感</td></tr>
-  </table>
-  <div class="code-block" style="font-size:11px;margin-top:6px">/* この3行がWin95 UIの全て */
-.raised { border-color: #fff #404040 #404040 #fff; }  /* 出っ張り = ボタン・ウィンドウ */
-.sunken { border-color: #808080 #fff #fff #808080; }  /* 凹み = 入力欄・ステータスバー */
-.active { border-color: #404040 #fff #fff #404040; }  /* 押下 = raised の反転 */</div>
+  <p style="font-size:14px;line-height:1.9;margin-bottom:6px">
+    Win95のデザインには<b>思想</b>がある。見た目のルールじゃなくて、<b>「画面の向こうに物がある」と感じさせる設計</b>。
+  </p>
+  <div style="display:flex;gap:12px">
+    <div class="inset" style="flex:1;padding:10px 14px;background:#f0f8ff">
+      <p style="font-size:14px;font-weight:bold;margin-bottom:4px">思想</p>
+      <p style="font-size:13px;line-height:1.8">
+        <b>物理の模倣</b> &mdash; ボタンは出っ張り、押したら凹む。光と影だけで「触れる」感覚を作る<br>
+        <b>制約が美学</b> &mdash; 色5色、フォント1つ、グラデーションなし。制約があるから統一感が生まれる<br>
+        <b>空間の階層</b> &mdash; デスクトップ &gt; ウィンドウ &gt; ダイアログ。z軸で「部屋の奥行き」を表現
+      </p>
+    </div>
+    <div class="inset" style="flex:1;padding:10px 14px;background:#f8f8f8">
+      <p style="font-size:14px;font-weight:bold;margin-bottom:4px">実装</p>
+      <p style="font-size:13px;line-height:1.8">
+        <b>光源は左上</b> &mdash; 左上が白、右下がグレー。2色で立体感<br>
+        <b>状態は反転</b> &mdash; 押したらボーダーが反転。hover変色じゃなく凹む<br>
+        <b>色は5色</b> &mdash; #c0c0c0 / #fff / #808080 / #404040 / #000080
+      </p>
+      <div class="code-block" style="font-size:10px;margin-top:4px">.raised { border-color: #fff #404040 #404040 #fff; }
+.sunken { border-color: #808080 #fff #fff #808080; }</div>
+    </div>
+  </div>
   <p class="note">※ この資料自体がWin95 UIで作られています（再帰的）</p>
 </div>
 
-<!-- ======== Slide 7: 全機能一覧 ======== -->
+<!-- ════════════════════════════════════════
+     Phase 2: デモ + 全機能
+     ════════════════════════════════════════ -->
+
+<!-- ======== Slide 7: デモ前 ======== -->
 <div class="slide synergy" data-slide="6">
+  <h1>実際に見てみましょう</h1>
+  <div style="text-align:center;padding:24px 0">
+    <div style="font-size:32px;font-weight:bold;color:var(--navy)">DEMO</div>
+    <div style="font-size:14px;color:var(--gray);margin-top:8px">実際のサイトを開いて、操作してみます</div>
+  </div>
+  <div class="inset dark" style="text-align:center;padding:16px">
+    <div style="font-family:'VT323',monospace;font-size:16px;color:var(--signal-green)">
+      Connecting to FM 82.8 MHz...<br>
+      <span style="color:var(--muted-green)">Signal strength: |||||||||| OK</span>
+    </div>
+  </div>
+  <div style="text-align:center;padding:8px 0">
+    <span style="font-size:11px;color:var(--gray)">「次へ」を押すと起動します... （たぶん）</span>
+  </div>
+</div>
+
+<!-- ======== Slide 8: BSOD ======== -->
+<div class="slide synergy" data-slide="7"></div>
+
+<!-- ======== Slide 9: 全機能デモ ======== -->
+<div class="slide synergy" data-slide="8">
   <h1>Tweenの全機能</h1>
+  <div style="display:flex;align-items:center;justify-content:center;gap:16px;padding:2px 0">
+    <div style="text-align:center">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=72x72&data=https://tween828.pages.dev/" width="72" height="72" alt="QR" style="border:2px solid var(--dark);image-rendering:pixelated">
+      <div style="font-size:10px;color:var(--gray);margin-top:2px">tween828.pages.dev</div>
+    </div>
+    <div style="font-size:13px;color:var(--navy)">
+      <b>スマホで開いてみてください</b><br>
+      <span style="font-size:11px;color:var(--gray)">※ ブルースクリーンは演出です。PCは無事です。</span>
+    </div>
+  </div>
   <table class="compare-table" style="font-size:12px">
     <tr><th style="width:130px">機能</th><th>詳細</th><th style="width:150px">技術</th></tr>
     <tr><td><b>BGMプレイヤー</b></td><td>45ジャンル、シャッフル、Winamp風ビジュアライザー</td><td>YouTube API + KVキャッシュ</td></tr>
@@ -957,11 +999,11 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
     <tr><td><b>トレイ</b></td><td>時計 + バッテリー + ON AIRランプ</td><td>Battery Status API</td></tr>
     <tr><td><b>PWA</b></td><td>ホーム画面追加・オフライン対応</td><td>Service Worker</td></tr>
   </table>
-  <p class="note">フレームワーク不使用。単一HTML + CSS + バニラJS。依存ゼロ。</p>
+  <p class="note">フレームワーク不使用。単一HTML + CSS + バニラJS。依存ゼロ。実サイトを見ながら確認してみてください。</p>
 </div>
 
-<!-- ======== Slide 8: 世界観の仕掛け ======== -->
-<div class="slide synergy" data-slide="7">
+<!-- ======== Slide 10: 世界観の仕掛け ======== -->
+<div class="slide synergy" data-slide="9">
   <h1>世界観の仕掛け</h1>
   <p style="font-size:14px;line-height:1.8">機能の裏に、叙事がある。ファイル名だけで場面が浮かぶ。開かなくても脳内で再生される。</p>
   <div style="display:flex;gap:12px;margin-top:4px">
@@ -985,71 +1027,11 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
       </p>
     </div>
   </div>
-  <p style="font-size:14px;margin-top:6px">天気の都市名は<b>Tween City</b>。存在しない街の天気予報。全てが一つの世界。機能の堆積じゃない。</p>
+  <p style="font-size:14px;margin-top:6px">全てが一つの世界。機能の堆積じゃない。</p>
 </div>
 
-<!-- ════════════════════════════════════════
-     Phase 3: デモ
-     ════════════════════════════════════════ -->
-
-<!-- ======== Slide 9: デモ前 ======== -->
-<div class="slide synergy" data-slide="8">
-  <h1>実際に見てみましょう</h1>
-  <div style="text-align:center;padding:24px 0">
-    <div style="font-size:32px;font-weight:bold;color:var(--navy)">DEMO</div>
-    <div style="font-size:14px;color:var(--gray);margin-top:8px">実際のサイトを開いて、操作してみます</div>
-  </div>
-  <div class="inset dark" style="text-align:center;padding:16px">
-    <div style="font-family:'VT323',monospace;font-size:16px;color:var(--signal-green)">
-      Connecting to FM 82.8 MHz...<br>
-      <span style="color:var(--muted-green)">Signal strength: |||||||||| OK</span>
-    </div>
-  </div>
-  <div style="text-align:center;padding:8px 0">
-    <span style="font-size:11px;color:var(--gray)">「次へ」を押すと起動します... （たぶん）</span>
-  </div>
-</div>
-
-<!-- ======== Slide 10: BSOD ======== -->
-<div class="slide synergy" data-slide="9"></div>
-
-<!-- ======== Slide 11: デモ復帰 ======== -->
+<!-- ======== Slide 11: 交流タイム ======== -->
 <div class="slide synergy" data-slide="10">
-  <h1>デモタイム</h1>
-  <div class="inset dark" style="text-align:center;padding:20px">
-    <div style="font-family:'VT323',monospace;font-size:20px;color:var(--signal-green)">
-      SYSTEM RECOVERED
-    </div>
-    <div style="font-family:'VT323',monospace;font-size:14px;color:var(--muted-green);margin-top:4px">
-      All systems nominal. Resuming broadcast...
-    </div>
-  </div>
-  <p style="text-align:center;font-size:15px;font-weight:bold;color:var(--navy);padding:4px 0">
-    皆さんも自分のスマホで開いてみてください
-  </p>
-  <div style="display:flex;align-items:center;justify-content:center;gap:20px;padding:4px 0">
-    <div style="text-align:center">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://tween828.pages.dev/" width="100" height="100" alt="QR" style="border:2px solid var(--dark);image-rendering:pixelated">
-      <div style="font-size:11px;color:var(--gray);margin-top:2px">tween828.pages.dev</div>
-    </div>
-    <div>
-      <a class="link-btn" href="https://tween828.pages.dev/" target="_blank" rel="noopener" style="font-size:14px;height:34px;padding:0 24px">
-        <svg width="14" height="14" viewBox="0 0 15 14" style="image-rendering:pixelated">
-          <line x1="11" y1="0" x2="14" y2="3" stroke="currentColor" stroke-width="1"/>
-          <rect x="0" y="2" width="15" height="12" fill="#c0c0c0" stroke="currentColor" stroke-width="1"/>
-          <rect x="1" y="4" width="6" height="8" fill="#808080"/>
-          <rect x="8" y="4" width="6" height="3" fill="#fff"/>
-          <rect x="8.5" y="5" width="5" height="1.5" fill="#008080"/>
-        </svg>
-        tween828.pages.dev を開く
-      </a>
-    </div>
-  </div>
-  <p class="note" style="text-align:center">※ ブルースクリーンは演出です。PCは無事です。</p>
-</div>
-
-<!-- ======== Slide 12: 交流タイム ======== -->
-<div class="slide synergy" data-slide="11">
   <h1>交流タイム</h1>
   <p style="font-size:14px;line-height:1.8;text-align:center">
     Tweenの掲示板に、何か書いてみてください。<br>
@@ -1075,11 +1057,11 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
 </div>
 
 <!-- ════════════════════════════════════════
-     Phase 4: 技術（後半）
+     Phase 3: 技術（後半）
      ════════════════════════════════════════ -->
 
-<!-- ======== Slide 13: 技術構成 ======== -->
-<div class="slide synergy" data-slide="12">
+<!-- ======== Slide 12: 技術構成 ======== -->
+<div class="slide synergy" data-slide="11">
   <h1>技術構成</h1>
   <div class="flow">
     <div class="flow-box brand">Tween<br><span style="font-size:13px;color:var(--muted-green)">Win95 UI</span></div>
@@ -1105,8 +1087,8 @@ const yt = await fetch(`youtube/v3/search?q=${query}`);</div>
   </table>
 </div>
 
-<!-- ======== Slide 14: Cloudflare深掘り ======== -->
-<div class="slide synergy" data-slide="13">
+<!-- ======== Slide 13: Cloudflare深掘り ======== -->
+<div class="slide synergy" data-slide="12">
   <h1>Cloudflare Worker + KV + D1</h1>
   <div style="display:flex;gap:12px">
     <div style="flex:1">
@@ -1139,11 +1121,11 @@ const key = keys[requestCount % keys.length];</div>
 </div>
 
 <!-- ════════════════════════════════════════
-     Phase 5: Code → Figma
+     Phase 4: Code → Figma
      ════════════════════════════════════════ -->
 
-<!-- ======== Slide 15: Code→Figma ======== -->
-<div class="slide synergy" data-slide="14">
+<!-- ======== Slide 14: Code→Figma ======== -->
+<div class="slide synergy" data-slide="13">
   <h1>Code &rarr; Figma パイプライン</h1>
   <div class="inset" style="background:#ffe4e4;padding:8px 14px">
     <p style="font-size:12px;line-height:1.7">
@@ -1155,7 +1137,7 @@ const key = keys[requestCount % keys.length];</div>
     <div class="pipeline-step">
       <div class="pipeline-num">1</div>
       <div class="pipeline-label">PHP / HTML / Reactページをヘッドレスブラウザで取得</div>
-      <div class="pipeline-tech">Puppeteer + getComputedStyle &rarr; JSON</div>
+      <div class="pipeline-tech">Puppeteer（ブラウザ自動操作） + getComputedStyle &rarr; JSON</div>
     </div>
     <div class="pipeline-step">
       <div class="pipeline-num">2</div>
@@ -1165,18 +1147,85 @@ const key = keys[requestCount % keys.length];</div>
     <div class="pipeline-step">
       <div class="pipeline-num">3</div>
       <div class="pipeline-label">Auto Layout用CSS生成 + Visual QA</div>
-      <div class="pipeline-tech">PostCSS + Playwright + Claude Vision + pixelmatch</div>
+      <div class="pipeline-tech">PostCSS（CSS変換） + Playwright（自動テスト） + Claude Vision（画像認識AI） + pixelmatch</div>
     </div>
     <div class="pipeline-step">
       <div class="pipeline-num">4</div>
       <div class="pipeline-label">Figma MCP経由でキャプチャ・取り込み</div>
-      <div class="pipeline-tech">capture.js &rarr; generate_figma_design（逆方向も対応）</div>
+      <div class="pipeline-tech">capture.js + Figma MCP（AI&harr;外部ツール接続規格）（逆方向も対応）</div>
     </div>
   </div>
   <div class="inset" style="background:#f0f8ff;margin-top:4px">
     <p style="font-size:13px;line-height:1.7">
-      <b>Figma API二層構造：</b> <b>MCP</b>（キャプチャ）+ <b>REST API</b>（CSS値・テキスト抽出の正解ソース）
+      <b>Figma API二層構造：</b> <b>MCP</b>（Model Context Protocol）（キャプチャ）+ <b>REST API</b>（CSS値・テキスト抽出の正解ソース）
     </p>
+  </div>
+</div>
+
+
+<!-- ======== Slide 15: BBNaviパイプライン ======== -->
+<div class="slide synergy" data-slide="14">
+  <h1>BBNavi パイプライン — 実案件の複雑さ</h1>
+  <div class="inset" style="background:#f0f8ff;padding:6px 14px">
+    <p style="font-size:12px;line-height:1.6">
+      <b>BBNavi</b> = GMOとくとくBBのお客様向けポータルサイト（PHP）。ページ数が膨大 + デザインデータなし。<br>
+      Tweenの4ステップでは足りない &rarr; <b>5フェーズ・14スクリプト（TypeScript）の専用パイプラインを構築。</b>
+    </p>
+  </div>
+  <div style="display:flex;gap:10px;margin-top:4px">
+    <div style="flex:1">
+      <div class="pipeline" style="font-size:11px">
+        <div class="pipeline-step" style="padding:4px 8px">
+          <div class="pipeline-num">0</div>
+          <div class="pipeline-label">疑似要素SVG事前生成（15種+）</div>
+        </div>
+        <div class="pipeline-step" style="padding:4px 8px">
+          <div class="pipeline-num">1</div>
+          <div class="pipeline-label">PHP取得 + getComputedStyle &rarr; JSON</div>
+        </div>
+        <div class="pipeline-step" style="padding:4px 8px">
+          <div class="pipeline-num">2</div>
+          <div class="pipeline-label">::before/::after &rarr; &lt;img src="svg"&gt;</div>
+        </div>
+        <div class="pipeline-step" style="padding:4px 8px">
+          <div class="pipeline-num">3</div>
+          <div class="pipeline-label">CSS抽出 + Visual QA 3段階</div>
+        </div>
+        <div class="pipeline-step" style="padding:4px 8px">
+          <div class="pipeline-num">4</div>
+          <div class="pipeline-label">flexbox CSS注入 &rarr; Figmaキャプチャ</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:4px">
+        <div class="inset" style="flex:1;padding:4px 8px;background:#fff8f0">
+          <p style="font-size:11px"><b>CSS 2モード:</b> flex / original</p>
+        </div>
+        <div class="inset" style="flex:1;padding:4px 8px;background:#f0fff0">
+          <p style="font-size:11px"><b>PC + SP:</b> UA偽装 + 375px</p>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div class="code-block" style="font-size:10px;line-height:1.5;white-space:pre;font-family:'Courier New',monospace">// extract-computed-styles.ts — 全要素のCSS値を取得
+const styles = await page.evaluate(() =&gt; {
+  return [...document.querySelectorAll('*')].map(el =&gt; ({
+    selector: buildSelector(el),
+    computed: getComputedStyle(el),
+    before:   getComputedStyle(el, '::before'),
+    after:    getComputedStyle(el, '::after'),
+  }));
+});</div>
+      <div class="code-block" style="font-size:10px;line-height:1.5;white-space:pre;font-family:'Courier New',monospace;margin-top:4px">// html-to-flex.ts — 子要素の位置からflex方向を推論
+const dx = Math.abs(curr.rect.x - prev.rect.x);
+const dy = Math.abs(curr.rect.y - prev.rect.y);
+if (dx &gt; dy) horizontalCount++;
+// &rarr; row or column を自動判定</div>
+      <div class="code-block" style="font-size:10px;line-height:1.5;white-space:pre;font-family:'Courier New',monospace;margin-top:4px">// generate-icon-map.ts — フォントグリフ &rarr; SVG
+// Y軸反転（フォント座標系は下から上）
+&lt;g transform="translate(0,1000) scale(1,-1)"&gt;
+  &lt;path d="${pathData}"/&gt;  // 1000+グリフ
+&lt;/g&gt;</div>
+    </div>
   </div>
 </div>
 
@@ -1206,7 +1255,7 @@ const key = keys[requestCount % keys.length];</div>
 </div>
 
 <!-- ════════════════════════════════════════
-     Phase 6: Claude Code + AI
+     Phase 5: Claude Code + AI
      ════════════════════════════════════════ -->
 
 <!-- ======== Slide 17: Claude Code カスタマイズ ======== -->
@@ -1217,7 +1266,7 @@ const key = keys[requestCount % keys.length];</div>
     <div style="flex:1">
       <table class="compare-table" style="font-size:13px">
         <tr><th style="width:100px">種類</th><th>ファイル</th><th>役割</th></tr>
-        <tr><td><b>コマンド</b></td><td>/figma-react</td><td>Figmaデザイン &rarr; Design Token抽出 &rarr; Reactコンポーネント生成 &rarr; Figmaキャプチャ</td></tr>
+        <tr><td><b>コマンド</b></td><td>/code-to-figma</td><td>ソースサイトCSS &rarr; Design Token抽出 &rarr; Reactコンポーネント生成 &rarr; Figmaキャプチャ</td></tr>
         <tr><td><b>スキル</b></td><td>win95-component-rules</td><td>Named Wrapperパターン、SVGピクセルアート、border-color制御</td></tr>
         <tr><td><b>リファレンス</b></td><td>win95-design-system</td><td>カラー・フォント・ボーダー一覧。Design Tokenの正解ソース</td></tr>
         <tr><td><b>リファレンス</b></td><td>component-catalog</td><td>既存コンポーネント一覧。重複生成を防ぐ</td></tr>
@@ -1228,7 +1277,7 @@ const key = keys[requestCount % keys.length];</div>
 ├── CLAUDE.md
 ├── .mcp.json
 ├── commands/
-│   └── figma-react.md
+│   └── code-to-figma.md
 ├── skills/
 │   └── win95-component-rules.md
 ├── references/
@@ -1274,7 +1323,7 @@ const key = keys[requestCount % keys.length];</div>
 </div>
 
 <!-- ════════════════════════════════════════
-     Phase 7: 締め
+     Phase 6: 締め
      ════════════════════════════════════════ -->
 
 <!-- ======== Slide 19: まとめ ======== -->

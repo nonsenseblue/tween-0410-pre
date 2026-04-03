@@ -272,6 +272,47 @@ body {
   border-color: var(--dark) var(--white) var(--white) var(--dark);
 }
 
+/* ── Maximized state ── */
+.win-window.maximized {
+  width: 100vw !important;
+  height: calc(100vh - 28px) !important;
+  max-width: none;
+  max-height: none;
+  top: 0;
+  left: 0;
+  transform: none;
+  border: none;
+  box-shadow: none;
+}
+.win-window.maximized .win-body {
+  overflow: hidden;
+}
+.win-window.maximized .slide-nav {
+  padding: 8px 20px;
+}
+.win-window.maximized .nav-btn {
+  height: 36px;
+  padding: 0 28px;
+  font-size: 14px;
+}
+.win-window.maximized .slide-counter {
+  font-size: 14px;
+}
+.win-window.maximized .status-bar {
+  font-size: 13px;
+  padding: 3px 8px;
+}
+.win-window.maximized .title-bar {
+  padding: 4px 6px;
+}
+.win-window.maximized .title-text {
+  font-size: 13px;
+}
+.win-window.maximized .title-btn {
+  width: 20px;
+  height: 18px;
+}
+
 /* ── Window Body ── */
 .win-body {
   padding: 20px 28px;

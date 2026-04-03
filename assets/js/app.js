@@ -192,6 +192,53 @@ function focusPresentation() {
   }
 }
 
+var isMaximized = false;
+function toggleMaximize() {
+  isMaximized = !isMaximized;
+  if (isMaximized) {
+    $winPres.classList.add('maximized');
+    rescaleSlides();
+  } else {
+    $winPres.classList.remove('maximized');
+    clearScale();
+  }
+}
+
+function rescaleSlides() {
+  var body = $winPres.querySelector('.win-body');
+  if (!body) return;
+  var bodyW = body.clientWidth;
+  var bodyH = body.clientHeight;
+  /* Original design width */
+  var baseW = 824; /* 880 - padding 28*2 */
+  var scaleX = bodyW / baseW;
+  /* Apply scale to all slides */
+  var slides = body.querySelectorAll('.slide');
+  slides.forEach(function(s) {
+    s.style.transformOrigin = 'top left';
+    s.style.transform = 'scale(' + scaleX + ')';
+    s.style.width = baseW + 'px';
+    s.style.height = (bodyH / scaleX) + 'px';
+  });
+}
+
+function clearScale() {
+  var body = $winPres.querySelector('.win-body');
+  if (!body) return;
+  var slides = body.querySelectorAll('.slide');
+  slides.forEach(function(s) {
+    s.style.transform = '';
+    s.style.width = '';
+    s.style.height = '';
+    s.style.transformOrigin = '';
+  });
+}
+
+/* Rescale on window resize when maximized */
+window.addEventListener('resize', function() {
+  if (isMaximized) rescaleSlides();
+});
+
 function minimizeWindow() {
   $winPres.classList.remove('active');
 }

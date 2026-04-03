@@ -207,25 +207,17 @@ function toggleMaximize() {
 function rescaleSlides() {
   var body = $winPres.querySelector('.win-body');
   if (!body) return;
-  /* Available space (body minus nav) */
-  var nav = body.querySelector('.slide-nav');
-  var navH = nav ? nav.offsetHeight : 40;
   var bodyW = body.clientWidth;
-  var bodyH = body.clientHeight - navH;
-  /* Original design dimensions (880 - padding 28*2) */
+  /* Original design width (880 - padding 28*2) */
   var baseW = 824;
-  var baseH = 480;
-  /* Fit: use the smaller scale so nothing gets cut */
-  var scaleX = bodyW / baseW;
-  var scaleY = bodyH / baseH;
-  var scale = Math.min(scaleX, scaleY);
-  /* Apply scale to all slides */
+  var scale = bodyW / baseW;
+  /* Scale to fit width, scroll if taller */
   var slides = body.querySelectorAll('.slide');
   slides.forEach(function(s) {
     s.style.transformOrigin = 'top left';
     s.style.transform = 'scale(' + scale + ')';
     s.style.width = baseW + 'px';
-    s.style.height = baseH + 'px';
+    s.style.height = '';
   });
 }
 

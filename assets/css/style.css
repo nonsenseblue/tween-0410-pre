@@ -285,7 +285,7 @@ body {
   box-shadow: none;
 }
 .win-window.maximized .win-body {
-  overflow: hidden;
+  overflow-y: auto;
 }
 .win-window.maximized .slide-nav {
   padding: 8px 20px;

@@ -291,12 +291,12 @@ body {
   padding: 8px 20px;
 }
 .win-window.maximized .nav-btn {
-  height: 36px;
-  padding: 0 28px;
-  font-size: 14px;
+  display: none;
 }
 .win-window.maximized .slide-counter {
   font-size: 14px;
+  width: 100%;
+  text-align: center;
 }
 .win-window.maximized .status-bar {
   font-size: 13px;

@@ -210,7 +210,7 @@ function rescaleSlides() {
   var bodyW = body.clientWidth;
   /* Original design width (880 - padding 28*2) */
   var baseW = 824;
-  var scale = bodyW / baseW;
+  var scale = (bodyW / baseW) * 0.85;
   /* Scale to fit width, scroll if taller */
   var slides = body.querySelectorAll('.slide');
   slides.forEach(function(s) {

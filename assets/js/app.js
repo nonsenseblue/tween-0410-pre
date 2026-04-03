@@ -214,9 +214,10 @@ function rescaleSlides() {
   /* Scale to fit width, scroll if taller */
   var slides = body.querySelectorAll('.slide');
   slides.forEach(function(s) {
-    s.style.transformOrigin = 'top left';
+    s.style.transformOrigin = 'top center';
     s.style.transform = 'scale(' + scale + ')';
     s.style.width = baseW + 'px';
+    s.style.margin = '0 auto';
     s.style.height = '';
   });
 }
@@ -229,6 +230,7 @@ function clearScale() {
     s.style.transform = '';
     s.style.width = '';
     s.style.height = '';
+    s.style.margin = '';
     s.style.transformOrigin = '';
   });
 }
